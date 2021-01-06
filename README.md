@@ -25,7 +25,10 @@ Now i intent to improve it step by step. Actually the 'old' and still nearly dai
 * Saving of search results
 * Command line interface
 * Saving and retrieval of search criteria
-
+* Click on file in above will open complete file with highlighted search results (Nochanges possible though)
+* .
+* .
+* 
 
 #### Drawbacks (06.01.2021)
 
