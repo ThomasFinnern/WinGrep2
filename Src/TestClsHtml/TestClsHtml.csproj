@@ -1,0 +1,162 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{BD5D6173-24FF-4D14-8081-2E1DA3AFCFDA}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TestClsHtml</RootNamespace>
+    <AssemblyName>TestClsHtml</AssemblyName>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>2.0</OldToolsVersion>
+    <UpgradeBackupLocation />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\LibCmdLine\clsCmdLineToken.cs">
+      <Link>LibCmdLine\clsCmdLineToken.cs</Link>
+    </Compile>
+    <Compile Include="..\LibCmdLine\clsCommandBase.cs">
+      <Link>LibCmdLine\clsCommandBase.cs</Link>
+    </Compile>
+    <Compile Include="..\LibCmdLine\clsCommandLine.cs">
+      <Link>LibCmdLine\clsCommandLine.cs</Link>
+    </Compile>
+    <Compile Include="..\LibCmdLine\clsOptionsBase.cs">
+      <Link>LibCmdLine\clsOptionsBase.cs</Link>
+    </Compile>
+    <Compile Include="..\LibCmdLine\frmCommandLine.cs">
+      <Link>LibCmdLine\frmCommandLine.cs</Link>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="..\LibCmdLine\frmCommandLine.designer.cs">
+      <Link>LibCmdLine\frmCommandLine.designer.cs</Link>
+      <DependentUpon>frmCommandLine.cs</DependentUpon>
+    </Compile>
+    <Compile Include="..\NetGrepWin\clsHtmlBaseLib.cs">
+      <Link>clsHtmlBaseLib.cs</Link>
+    </Compile>
+    <Compile Include="..\NetGrepWin\clsHtmlContentBase.cs">
+      <Link>clsHtmlContentBase.cs</Link>
+    </Compile>
+    <Compile Include="..\NetGrepWin\clsHtmlContentText.cs">
+      <Link>clsHtmlContentText.cs</Link>
+    </Compile>
+    <Compile Include="..\NetGrepWin\clsHtmlDocType.cs">
+      <Link>clsHtmlDocType.cs</Link>
+    </Compile>
+    <Compile Include="..\NetGrepWin\clsHtmlElement.cs">
+      <Link>clsHtmlElement.cs</Link>
+    </Compile>
+    <Compile Include="..\NetGrepWin\clsHtmlEncode.cs">
+      <Link>clsHtmlEncode.cs</Link>
+    </Compile>
+    <Compile Include="..\NetGrepWin\clsHtmlPage.cs">
+      <Link>clsHtmlPage.cs</Link>
+    </Compile>
+    <Compile Include="..\NetGrepWin\clsHtmlProperties.cs">
+      <Link>clsHtmlProperties.cs</Link>
+    </Compile>
+    <Compile Include="..\NetGrepWin\clsHtmlProperty.cs">
+      <Link>clsHtmlProperty.cs</Link>
+    </Compile>
+    <Compile Include="..\NetGrepWin\clsHtmlStdElements.cs">
+      <Link>clsHtmlStdElements.cs</Link>
+    </Compile>
+    <Compile Include="LibConfig\clsAppPaths.cs" />
+    <Compile Include="LibConfig\clsAppPathsBase.cs" />
+    <Compile Include="LibConfig\clsConfigBase.cs" />
+    <Compile Include="LibConfig\clsExistingPath.cs" />
+    <Compile Include="LibConfig\clsUserConfigFiles.cs" />
+    <Compile Include="LibDebugLog\clsDebLog.cs" />
+    <Compile Include="LibErrorInfo\clsErrorCapture.cs" />
+    <Compile Include="LibErrorInfo\clsLogError.cs" />
+    <Compile Include="LibErrorInfo\clsLogErrors.cs" />
+    <Compile Include="LibErrorInfo\ErrorInfo.cs" />
+    <Compile Include="LibGeneral\clsEncapsulatedListBase.cs" />
+    <Compile Include="LibGeneral\clsStdFileDateTime.cs" />
+    <Compile Include="LibGeneral\LibStringFileFolderNames.cs" />
+    <Compile Include="LibGeneral\LibStringFunctions.cs" />
+    <Compile Include="LibGeneral\LibStringsUtf8.cs" />
+    <Compile Include="LibGeneral\LibVbReplacements.cs" />
+    <Compile Include="Program\CmdLine\clsCmdLineConfig.cs" />
+    <Compile Include="Program\CmdLine\clsCommandLineCmdDefinition.cs" />
+    <Compile Include="Program\CmdLine\LibCommandLineFunctions.cs" />
+    <Compile Include="Program\Config\clsConfigTestClsHtml.cs" />
+    <Compile Include="Program\MainGlobal\clsMainGlobal.cs" />
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="..\LibCmdLine\frmCommandLine.resx">
+      <Link>LibCmdLine\frmCommandLine.resx</Link>
+      <DependentUpon>frmCommandLine.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form1.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="clsHtmlElementTest.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

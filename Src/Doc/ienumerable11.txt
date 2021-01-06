@@ -1,0 +1,6 @@
+public IEnumerator GetEnumerator()
+{
+    foreach (KeyValuePair<string, Dictionary<string, Element>> pair in folders)
+       foreach (KeyValuePair<string, Element> pair2 in pair.Value)
+          yield return pair2.Value;
+}

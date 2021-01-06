@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<clsSearchFoldersToken xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <CfgVersion>0.001</CfgVersion>
+    <TokenList>
+        <string>d:\Pr004\Entwickl.2011\NetGrepGroup.2005.ReplaceData</string>
+        <string>d:\CvsHome\pr004\nsnt\Sprachen</string>
+        <string>d:\CvsHome\pr004\nsnt\Sprachen </string>
+        <string>d:\Schleif.Nt\Paket63\</string>
+        <string>d:\Schleif.Nt\Paket18\</string>
+        <string>d:\Pr004\Entwickl.2011\LangMan.2005\LangMan.2005\</string>
+        <string>d:\CvsHome\pr004\Entwickl\fanuc_project\C_Executer\CEX-WalterVersion\</string>
+        <string>d:\CvsHome\Schleif.Nt.2011\Paket18_d</string>
+        <string>d:\CvsHome\Schleif.Nt.2011\Paket18_d </string>
+        <string>d:\CvsHome\pr004\Entwickl\fanuc_project\C_Executer\CEX-WalterVersion</string>
+        <string>d:\CvsHome\pr004\Entwickl\fanuc_project\C_Executer\CEX-WalterVersion </string>
+        <string>d:\Pr004\Entwickl.2011\NetGrepGroup.2005</string>
+        <string>c:\</string>
+    </TokenList>
+    <FixedTokenList />
+    <PreFixedTokenNumber>0</PreFixedTokenNumber>
+    <FirstFixedTokenNumber>10</FirstFixedTokenNumber>
+    <MaxTokenNumber>0</MaxTokenNumber>
+    <MaxFixedNumber>0</MaxFixedNumber>
+</clsSearchFoldersToken>

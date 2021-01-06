@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<clsFileSpecificationToken xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <CfgVersion>0.001</CfgVersion>
+    <TokenList>
+        <string>*.cs</string>
+        <string>paket*_eng.wrp</string>
+        <string>*_eng.wrp</string>
+        <string>*.def *.h *.inc *.c *.lib *.txt</string>
+        <string>*.h *.hpp *.c *.cpp</string>
+        <string>*.*</string>
+    </TokenList>
+    <FixedTokenList />
+    <PreFixedTokenNumber>0</PreFixedTokenNumber>
+    <FirstFixedTokenNumber>10</FirstFixedTokenNumber>
+    <MaxTokenNumber>0</MaxTokenNumber>
+    <MaxFixedNumber>0</MaxFixedNumber>
+</clsFileSpecificationToken>

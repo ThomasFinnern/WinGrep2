@@ -1,0 +1,61 @@
+using System;
+using System.Collections.Generic;
+using System.Collections;
+ 
+namespace Demo
+{
+	public class TestOverride : IEnumerable<string>
+	{
+                private List<string> _values;
+ 
+                public TestOverride(List<string> values)
+                {
+                    _values = values;
+                }
+ 
+		public IEnumerator<string> GetEnumerator()
+		{
+		    return new TestOverrideEnumerator(_values);
+		}
+ 
+		IEnumerator IEnumerable.GetEnumerator()
+		{
+			return GetEnumerator();
+		}
+ 
+		protected class TestOverrideEnumerator : IEnumerator<string>
+		{
+			private List<string> _values;
+			private int _currentIndex;
+ 
+			public TestOverrideEnumerator(List<string> values)
+			{
+				_values = new List<string>(values); 
+				Reset();
+			}
+ 
+			public string Current
+			{
+				get { return _values[_currentIndex]; }
+			}
+ 
+			public void Dispose() {}
+ 
+			object IEnumerator.Current
+			{
+				get { return Current; }
+			}
+ 
+			public bool MoveNext()
+			{
+				_currentIndex++;
+				return _currentIndex < _values.Count;
+			}
+ 
+			public void Reset()
+			{
+				_currentIndex = -1;
+			}
+		}
+	}
+}

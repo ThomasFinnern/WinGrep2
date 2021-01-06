@@ -1,0 +1,7 @@
+c# rich text box
+http://msdn.microsoft.com/en-us/library/system.windows.controls.richtextbox.aspx
+
+
+c# richtextbox schreiben
+
+http://www.wer-weiss-was.de/theme205/article5821150.html

@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<clsReplaceStringToken xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <CfgVersion>0.001</CfgVersion>
+    <TokenList>
+        <string>token</string>
+    </TokenList>
+    <FixedTokenList />
+    <PreFixedTokenNumber>7</PreFixedTokenNumber>
+    <FirstFixedTokenNumber>10</FirstFixedTokenNumber>
+    <MaxTokenNumber>25</MaxTokenNumber>
+    <MaxFixedNumber>15</MaxFixedNumber>
+</clsReplaceStringToken>

@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<clsSearchStringToken xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <CfgVersion>0.001</CfgVersion>
+    <TokenList>
+        <string>token</string>
+        <string>3113</string>
+        <string> \:=.*\,</string>
+        <string> \:=.*\, </string>
+        <string> := </string>
+        <string>oszil_a_aus</string>
+        <string>ISV</string>
+        <string>LangMan._005</string>
+        <string>DEBUG_OVER_RMACROS</string>
+        <string>_IPD_SPINDEL_EIN</string>
+        <string>ABRICHTER_AN</string>
+        <string>_ABR_SPINDEL_EIN</string>
+        <string>_ABR_SPINDEL_EIN </string>
+        <string>_ABR_HF_SP_RPM_EIN</string>
+        <string>OnReqTransferRetractPoints2Macro</string>
+        <string>AssignAxis</string>
+        <string>RetractAxisBuffer</string>
+        <string>reqretract</string>
+        <string>OnReqResetRetractPoints</string>
+        <string>InitRetractionBuffer</string>
+        <string>search</string>
+        <string>width</string>
+        <string>fixed</string>
+        <string>string</string>
+        <string>tag</string>
+    </TokenList>
+    <FixedTokenList>
+        <string>fixed</string>
+    </FixedTokenList>
+    <PreFixedTokenNumber>3</PreFixedTokenNumber>
+    <FirstFixedTokenNumber>2</FirstFixedTokenNumber>
+    <MaxTokenNumber>25</MaxTokenNumber>
+    <MaxFixedNumber>10</MaxFixedNumber>
+</clsSearchStringToken>

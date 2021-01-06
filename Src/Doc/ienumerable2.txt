@@ -1,0 +1,41 @@
+See the sample code below
+
+class DataStruct
+{
+public string  Name { get; set; }
+public string Author { get; set; }
+}
+
+class MyEnumeratorClass : IEnumerable, IEnumerator
+{
+IEnumerator iEnum;
+List<DataStruct> myData =3D new List<DataStruct>();
+
+public MyEnumeratorClass()
+{
+iEnum=3D myData.GetEnumerator();
+}
+
+public IEnumerator GetEnumerator()
+{
+return myData.GetEnumerator();
+}
+
+public void Reset()
+{
+iEnum.Reset();
+}
+public bool MoveNext()
+{
+return iEnum.MoveNext();
+}
+public object Current
+{
+get
+{
+return iEnum.Current;
+}
+}
+}
+
+you can also refer to http://www.codeproject.com/KB/cs/sssienumerable.aspx

@@ -1,0 +1,18 @@
+Using Yield Break
+
+When using yield return statements, the iterator continues to execute until all of the yield statements have been processed and the method ends normally. This signifies the termination of the iterator and causes any foreach loop to end. However, sometimes you will want to stop the enumerator earlier, perhaps in response to a condition being met. When this occurs, you can use the yield break statement.
+
+To demonstrate, add the following method to the MyEnumerableClass class. This method accepts a parameter, which may contain the name of a fruit. If the name is found whilst looping through the array, it is retuned. However, on the next iteration the yield break statement is encountered so the loop ends early.
+
+public IEnumerable<string> Limited(string lastItem)
+{
+    for (int i = 0; i < _fruitList.Length; i++)
+    {
+        yield return _fruitList[i];
+
+        if (_fruitList[i] == lastItem)
+        {
+            yield break;
+        }
+    }
+}

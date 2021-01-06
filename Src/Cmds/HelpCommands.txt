@@ -1,0 +1,48 @@
+Possible arguments 
+   /?                       :Prints Help 
+   /h                       :Prints Help 
+   /OutHelpFile             :="Filename": Defines the file for writing the Help texts. Must be
+                             defined before using /? or /h
+   /NoAutoExit              :Commands form stay open after all commands are executed
+   /CloseAfterCommandsDone  :Program will exit when all is done
+   /DontShowMessageBox      :Will not show messageboxes when a error occurs. The messages will be
+                             written into the logfile
+   /CmdPath                 :="Path": Defines the path for command files
+   /FolderFilePath          :="Path": Uses the path for file containing folder list
+   /FolderFile              :="File": Defines the file containing foldernames
+   /SearchString            :=search text. enter whatever it is which should be found
+   /FileSpecification       :="File specifications". Specifications like '*.cs '.exe' seperated by
+                             blanks
+   /Folders                 :="folders": List of folders seperated by ',' 
+   /MatchCase               :="true/false". Do match case of search string (default -> false)
+   /WholeWordsOnly          :=
+   /InvertMatch             :=
+   /StopAfterFirstMatch     :=
+   /SkipTextFiles           :=
+   /SkipBinaryFiles         :=
+   /LookInZips              :=
+   /RecourseFolders         :="true/false". Search in sub folders (default -> yes)
+   /CountFilesFirst         :=
+   /Skip_vti                :=
+   /DelimitedList           :="true/false"   
+   /DelimitedListSeperator  :="Char or string" which is used to destinguish between columns
+   /DelimitedListColumnNumber:="Column number" in which to search
+   /FixedWithList           :="true/false"   
+   /FixedWithStart          :=" " . Character column where to start search in line
+   /FixedWithSize           :="  " Width of the fied where to search for in line
+   /MatchAbove              :="lines". 0 shows no line above the found line
+   /MatchBelow              :="lines". 0 shows no line below the found line
+   /ShowSearchDialogOnStartup:="true/false"   
+   /EditorCommandLine       :=
+   /DoPopUpSearchOnStart    :="true/false" Do pop up search view on start of program
+   /bDoRepeatLastSearchOnStart:="true/false" Do repeat (start) last search on start of program
+Possible Commands 
+   CmdFile                  :="Filename" Select command file to use for multiple commandlines
+   Find                     :Find expression
+   Replace                  :Replace found expression
+   ShowResult               :Shows result in Windows of exe
+   UseFoldersFromFile       :Use folder names from file content and add them to the actual search
+                             list
+   WriteResultIntoFile      :
+   WriteResultIntoFileAsHtml:
+12.06.2011 16:43:07

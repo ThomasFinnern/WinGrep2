@@ -1,0 +1,52 @@
+// protected string mCfgVersion;
+protected string mSearchString;
+protected List<string> mSearchFileTypes = new List<string>();
+protected List<string> mSearchFolders = new List<string>();
+protected Dictionary<string, string> mDictSearchFolders = new Dictionary<string, string>();
+public string SearchString
+public List<string> SearchFileTypes
+public string SearchFileTypesAsString
+return String.Join(" ", mSearchFileTypes.ToArray());
+foreach (string InFileType in value.Split(' '))
+string Trimmed = InFileType.Trim();
+public List<string> SearchFolders
+public string SearchFoldersAsString
+return String.Join(" ", mSearchFolders.ToArray());
+foreach (string InFolder in value.Split(' '))
+string Trimmed = InFolder.Trim();
+- DelimitedListSeperator ="Char or string" which is used to destinguish between columns
+// Dictionary<string, string> mDictSearchFolders = new Dictionary<string, string>();
+public void AddSearchFolder(string Folder)
+// ToDo: Keep mFileSpecification as List <string>. Then the transfer is only once
+public List<string> FileSpecificationAsList()
+//string[] namesArray = "Tom,Scott,Bob".Split(',');
+//List<string> namesList = new List<string>(namesArray.Length);
+//List<string> FileTypes = FileSpecification.Split(' ').ToList<string>();
+// works VC# 2008 /2010 return FileSpecification.Split(' ').ToList<string>();
+List<string> FileSpecificationList = new List<string> ();
+foreach (string sFileSpecification in SearchFileTypesAsString.Split(' '))
+//public string[] FileSpecificationAsList()
+public override string ToString()
+string OutTxt = "";
+foreach (string SearchFolder in SearchFolders)
+ beispielsweise eine Spaltenbreite von 100 Pixeln, und mit width=33% eine Breite von einem Drittel der Breite der Gesamttabelle.
+
+Im Beispielschema 2 werden keine <col>-Tags notiert. Stattdessen notieren Sie im einleitenden <colgroup>-Tag das Attribut span (span = spannen). Als Wert weisen Sie die Anzahl der Spalten zu, die Sie wünschen. Mit dem Attribut width können Sie in diesem Fall eine einheitliche Spaltenbreite für alle Spalten definieren.
+
+Bei width haben Sie neben der Möglichkeit, Pixel oder Prozentwerte anzugeben, auch noch eine dritte Möglichkeit: Sie können das relative Breitenverhältnis der Spalten untereinander bestimmen, unabhängig davon, wie breit die Tabelle im Verhältnis zum Anzeigefenster ist. Eine solche Möglichkeit stellt das obige Beispielschema 3 vor. Bei Breitenangaben dieser Art weisen Sie width eine Zahl und dahinter ein Sternzeichen zu. Das Sternzeichen ist dabei nur ein Signalzeichen für den Browser, dass er die Zahlen davor nicht als Pixel interpretieren soll. Wichtig sind die Zahlen. Im obigen Beispiel 3 werden drei Spalten definiert, bei denen die relativen Zahlen 4, 2 und 1 in der Summe 7 ergeben. Damit definieren Sie eine Tabelle, bei der die erste Spalte vier Siebtel der Tabellenbreite einnimmt, die zweite Spalte zwei Siebtel, und die dritte Spalte ein Siebtel.
+Zur Geltung kommt ein relatives Spaltenverhältnis aber erst, wenn Sie außerdem eine Breite für die gesamte Tabelle angeben. Im obigen Beispielschema 3 geschieht das durch die Angabe width="100%" im einleitenden <table>-Tag.
+Beachten Sie:
+
+<col>-Tags dürfen in HTML kein Abschluss-Tag haben. Das abschließende </colgroup>-Tag ist dagegen optional. In Kapitel XHTML ist das schließende <col>-Tag aber erforderlich. Wenn Sie XHTML-Standard-konform arbeiten, müssen Sie daher das col-Element als inhaltsleer kennzeichnen. Dazu notieren Sie das alleinstehende Tag in der Form <col ... />. Weitere Informationen finden Sie im Kapitel Kapitel XHTML und HTML.
+
+Auch das <col>-Tag darf das Attribut span erhalten. Dadurch gruppieren Sie jedoch nicht mehrere Spalten zu einer, sondern Sie geben lediglich an, dass Attribute dieser Spalte auch für die nächsten soundsoviel Spalten gelten sollen. Wenn Sie beispielsweise <col span="3" width="100"> notieren, erhalten diese und die nächsten zwei Spalten die Breite von 100 Pixeln.
+
+Das <colgroup>-Tag darf die Attribute span und width auch dann enthalten, wenn unterhalb davon <col>-Tags definiert werden. Dabei überschreibt die Anzahl der definierten <col>-Tags jedoch die Angabe, die mit <colgroup span=> gemacht wurde, und das Attribut width innerhalb eines <col>-Tags hat Vorrang vor der Angabe width im <colgroup>-Tag.
+
+Es ist auch erlaubt, mehrere <colgroup>-Tags zu notieren. So können Sie beispielsweise mit <colgroup width="100" span="3"> und <colgroup width="50" span="5"> hintereinander notiert insgesamt 8 Spalten für die Tabelle definieren, wobei die ersten drei Spalten eine Breite von 100 Pixeln erhalten und die nachfolgenden fünf Spalten eine Breite von 50 Pixeln.
+
+Für die Breite der Tabellenspalten gelten die gleichen Hinweise wie beim Seite Erzwingen von Spaltenbreiten auf herkömmliche Weise.
+
+Zu Beispielschema 2: Safari bis Version 2.0.4 vergrößert Spalten nach dem Schema width="200" span="3" nicht.
+
+Zu Beispielschema 3: Internet Explorer, Opera, Konqueror und Safari interpretieren relative Angaben nach dem Schema width="4*" nicht. Diese Möglichkeit beschränkt sich daher auf Mozilla Firefox.

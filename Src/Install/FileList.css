@@ -1,0 +1,80 @@
+/*  Stylesheet for the file list view */
+
+
+* {
+	font-family: verdana;
+	font-size:8pt;
+	color:#000000;
+}
+
+table
+{
+	text-align:left;
+	size:100%;
+}
+
+/* Select Line */
+tr.highlight  td 
+{
+	color: black;  /**/
+	/* font-weight: bold;  /**/
+	background-color:#DCDCDC;  /**/
+}
+/**/
+
+.HeaderFoundFiles
+{
+	background-color:#4286CE;
+	size: 100%;
+	font-weight: bold;
+	color: white;
+	padding: 0;
+	margin: 0;
+	
+/*	
+	font-size:10pt;
+	font-weight: bold;
+	color: #FFFFFF;
+*/
+}
+
+.HeaderFoundFiles h1
+{
+	background-color:#4286CE;
+	font-size:12pt;
+	color: white;
+	padding: 0;
+	margin: 0;
+}
+
+.HeaderFoundFiles h2
+{
+	background-color:#4286CE;
+	font-size:10pt;
+	color: white;
+	padding: 0;
+	margin: 0;
+}
+
+hr
+{
+	color: gray;
+}
+
+.subheader , .subheader span /*, .header /**/
+{
+	background-color:#4286CE;  /** /
+	/* font-size:10pt; /** /
+	/* font-weight: bold;  /**/
+	/* color: #FFFFFF;  /**/
+	color: white; /**/
+}
+/**/
+
+.Info
+{
+	color: green;
+	font-weight: bold;
+}
+
+

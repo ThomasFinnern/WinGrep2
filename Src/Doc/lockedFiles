@@ -1,0 +1,22 @@
+From the comments, it looks like Memory Mapped Files won't help me accessing files that have an exclusive lock. However, "tail" tools like, e.g. Baretail (http://www.baremetalsoft.com/baretail/index.php) are able to do just that. It has no problem reading the file that has an exclusive lock from another application in 1s intervals). So, there has to be some way to do this?
+
+EDITEDIT:
+
+To answer my own question, the trick in opening a locked file is, creating the FileStream with the following access flags:
+
+fileStream = new System.IO.FileStream(fileName, FileMode.Open, FileAccess.Read, FileShare.Delete | FileShare.ReadWrite);
+
+c# .net memory-mapped-files
+share|edit
+	
+edited Nov 16 '10 at 21:48
+
+	
+asked Nov 16 '10 at 20:38
+Thomas J. Frey
+1,0251023
+	
+	
+I made a comment about the required FileShare argument in James' post. A MMF cannot work around a completely locked file, you'd be stuck if that's the case. – Hans Passant Nov 16 '10 at 21:10
+	
+Please see my Edit above. The issue seems to be more focused on getting around the exclusive lock than MMF vs. FileStream now. I've tried multiple windows tail tools and they all seem to be able to work around the exclusive lock just fine, any idea how they achieve this? – Thomas J. Frey Nov 16 '10 at 21:14

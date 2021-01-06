@@ -1,0 +1,29 @@
+// SimpleTaskFile: TasksBeforeReleaseNetGrepGroup, FileId: Base@20130430_131902.931, Version: 0.1::
+// [.-%+*@!] {Prio Signs}  '.':              Just an idea, '-':              Afterthought, '%':              In the future, '+':              Nice to have, '*':              Standard, '@':              For fun, '!':              Error
+//   '.':             Just an idea (1)
+//   '-':             Afterthought (2)
+//   '%':             In the future (4)
+//   '+':             Nice to have (8)
+//   '*':             Standard (16)
+//   '@':             For fun (32)
+//   '!':             Error (64)
+- ToDo: !!!!%..::Titel in applikation/form vor suche schreiben 
+- ToDo: !!!....::Spaces in front of result are ignored ==> Property  -> div (?span) ? 
+- ToDo: !!!..::FIX: Search for ">>" ::*.cpp *.h*::D:Heliprogemulation:: Index error for xml handling
+- ToDo: !!!.::Feedback function
+- ToDo: !!!::Setup / After setup:  XP standard folders for "C:\Program files\common files\NetGrepwin\Config\FileList.css" + "tokenList.css"
+- ToDo: %!!::Testablauf für searches like  ">>" ::*.cpp *.h*::D:Heliprogemulation:: Index error for xml handling
+- ToDo: !!::Tools: Search query info to clipboard / from clipboard  ==> "todo":: *.cs:: D:\Pr004\entwickl...
+- ToDo: **%..::Versioninfo help menu
+- ToDo: ***::Pause button
+- ToDo: ***::Cancel Button
+- ToDo: %..::language German / English
+- ToDo: %..::Doku of steps Fast stone capture (+ video)
+- ToDo: *::Anzeige was geht wenn gesucht wird
+- ToDo: %::Web Community forum ...
+- ToDo: .::Replace in selected files
+- Rejected: !!::- ToDo: !!::No fall down on hidden or forbidden folder / file ...
+- Done: %%...::Drag and drop on a) Folders (search prop form ant other form !
+- Done: ***...::Replace: a) external b) in org file
+- Done: !**::File öffnen mit doppelklick -> region settings automatic  e?...
+- Done: !!!::Folder names with space  -> "c:\PR004\entwickl\IDNCommander New\ParaUpdate2"

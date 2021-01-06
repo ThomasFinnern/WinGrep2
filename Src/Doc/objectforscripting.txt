@@ -1,0 +1,135 @@
+WebBrowser.ObjectForScripting Property 
+.NET Framework 4 Other Versions  .NET Framework 3.5 .NET Framework 3.0 .NET Framework 2.0 
+
+Gets or sets an object that can be accessed by scripting code that is contained within a Web page displayed in the WebBrowser control.
+
+
+Namespace:  System.Windows.Forms
+Assembly:  System.Windows.Forms (in System.Windows.Forms.dll)
+Syntax
+--------------------------------------------------------------------------------
+
+ VB C# C++ F# JScript  Copy [BrowsableAttribute(false)]
+public Object ObjectForScripting { get; set; }
+Property Value
+Type: System.Object
+The object being made available to the scripting code.
+
+Exceptions
+--------------------------------------------------------------------------------
+
+Exception Condition 
+ArgumentException  The specified value when setting this property is an instance of a non-public type.
+
+-or-
+
+The specified value when setting this property is an instance of a type that is not COM-visible. For more information, see Marshal.IsTypeVisibleFromCom.
+ 
+
+Remarks
+--------------------------------------------------------------------------------
+
+Use this property to enable communication between a Web page hosted by the WebBrowser control and the application that contains the WebBrowser control. This property lets you integrate dynamic HTML (DHTML) code with your client application code. The object specified for this property is available to Web page script as the window.external object, which is a built-in DOM object provided for host access. 
+
+You can set this property to any COM-visible object for which you want its public properties and methods available to scripting code. You can make a class COM-visible by marking it with the ComVisibleAttribute. 
+
+To call functions defined in your Web page from your client application code, use the HtmlDocument.InvokeScript method of the HtmlDocument object you can retrieve from the Document property.
+
+Examples
+--------------------------------------------------------------------------------
+
+The following code example demonstrates how to use the ObjectForScripting property. In the example, the ObjectForScripting property is set to the current form.
+
+ VB C# C++ F# JScript  Copy 
+using System;
+using System.Windows.Forms;
+using System.Security.Permissions;
+
+[PermissionSet(SecurityAction.Demand, Name="FullTrust")]
+[System.Runtime.InteropServices.ComVisibleAttribute(true)]
+public class Form1 : Form
+{
+    private WebBrowser webBrowser1 = new WebBrowser();
+    private Button button1 = new Button();
+
+    [STAThread]
+    public static void Main()
+    {
+        Application.EnableVisualStyles();
+        Application.Run(new Form1());
+    }
+
+    public Form1()
+    {
+        button1.Text = "call script code from client code";
+        button1.Dock = DockStyle.Top;
+        button1.Click += new EventHandler(button1_Click);
+        webBrowser1.Dock = DockStyle.Fill;
+        Controls.Add(webBrowser1);
+        Controls.Add(button1);
+        Load += new EventHandler(Form1_Load);
+    }
+
+    private void Form1_Load(object sender, EventArgs e)
+    {
+        webBrowser1.AllowWebBrowserDrop = false;
+        webBrowser1.IsWebBrowserContextMenuEnabled = false;
+        webBrowser1.WebBrowserShortcutsEnabled = false;
+        webBrowser1.ObjectForScripting = this;
+        // Uncomment the following line when you are finished debugging.
+        //webBrowser1.ScriptErrorsSuppressed = true;
+
+        webBrowser1.DocumentText =
+            "<html><head><script>" +
+            "function test(message) { alert(message); }" +
+            "</script></head><body><button " +
+            "onclick=\"window.external.Test('called from script code')\">" +
+            "call client code from script code</button>" +
+            "</body></html>";
+    }
+
+    public void Test(String message)
+    {
+        MessageBox.Show(message, "client code");
+    }
+
+    private void button1_Click(object sender, EventArgs e)
+    {
+        webBrowser1.Document.InvokeScript("test",
+            new String[] { "called from client code" });
+    }
+
+}
+
+
+Version Information
+--------------------------------------------------------------------------------
+
+.NET Framework
+Supported in: 4, 3.5, 3.0, 2.0
+
+.NET Framework Client Profile
+Supported in: 4, 3.5 SP1
+
+.NET Framework Security
+--------------------------------------------------------------------------------
+
+SecurityPermission  
+for immediate callers to use this control. Demand value: LinkDemand; Named Permission Sets: FullTrust.
+
+Platforms
+--------------------------------------------------------------------------------
+
+Windows 7, Windows Vista SP1 or later, Windows XP SP3, Windows XP SP2 x64 Edition, Windows Server 2008 (Server Core Role not supported), Windows Server 2008 R2 (Server Core Role not supported), Windows Server 2003 SP2
+
+
+
+The .NET Framework does not support all versions of every platform. For a list of the supported versions, see .NET Framework System Requirements. 
+See Also
+--------------------------------------------------------------------------------
+
+Reference
+WebBrowser Class 
+System.Windows.Forms Namespace 
+Document 
+HtmlDocument.InvokeScript 

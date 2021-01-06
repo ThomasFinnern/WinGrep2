@@ -1,0 +1,90 @@
+// SimpleTaskFile: ToDoNetGrep.02, FileId: Base@20120629_231003.604, Version: 100::
+// [-.%*+!] {Prio Base}  '-':  Afterthought, '.':  Just an idea, '%':  In the future, '*':  Standard, '+':  Nice to have, '!':  Error
+//   '-': Afterthought (1)
+//   '.': Just an idea (2)
+//   '%': In the future (4)
+//   '*': Standard (8)
+//   '+': Nice to have (16)
+//   '!': Error (32)
+- ToDo: ::What about OR and AND in search string
+- ToDo: ::U, --binary
+Treat the file(s) as binary. By default, under MS-DOS and MS-Windows, grep guesses the file type by looking at the contents of the first 32KB read from the file. If grep decides the file is a text file, it strips the CR characters from the original file contents (to make regular expressions with ^ and $ work correctly). Specifying -U overrules this guesswork, causing all files to be read and passed to the matching mechanism verbatim; if the file is a text file with CR/LF pairs at the end of each line, this will cause some regular expressions to fail. This option has no effect on platforms other than MS-DOS and MS-Windows.
+-x, --line-regexp
+Select only those matches that exactly match the whole line
+-b, --byte-offset
+Print the byte offset within the input file before each line of output.
+
+>>http://linux.die.net/man/1/grep
+- ToDo: ::ToString in all config files (update ...)
+- ToDo: ::token result view : add previous lines to actual line i
+- ToDo: ::suchen unterbrechbar durch flag
+- ToDo: ::Statusbar info: a) title
+- ToDo: ::Statusbar info: a) PROGRESSBAR a) smaller on filecount b) bigger on sufficient
+- ToDo: ::Statusbar info: a) Filename
+- ToDo: ::sort by filename (including/excluding path)
+- ToDo: ::Seperate List for token (button right in search form)
+- ToDo: ::Seperate List for filetypes (button right in search form)
+--include=PATTERN
+Recurse in directories only searching file matching PATTERN.
+--exclude=PATTERN
+Recurse in directories skip file matching PATTERN.
+- ToDo: ::Search result while searching when found (? single or
+- ToDo: ::Search result while searching click/double -> open file
+- ToDo: ::Search in own thread
+- ToDo: ::Search in openfile
+- ToDo: ::search folders mit [button] und dann als Liste text pro Zeile
+- ToDo: ::search folders mit "" bzw ' ' entsprechend ignorieren
+- ToDo: ::RTF: File list (above) as combo and index rechts davon
+- ToDo: ::RTF cmd open: start with extension matching program
+- ToDo: ::RTF cmd Edit: Lokaler Aufruf user Editor
+- ToDo: ::Results: class für wie oft gefunden Dateinummer in ...
+- ToDo: ::Resulting Text file shall have the same form / info like the html version
+- ToDo: ::search folders mit "" bzw ' ' entsprechend ignorieren
+- ToDo: ::Pre count files flag (files or folder propertie) ?
+- ToDo: ::Override autosearch on start with flag
+- ToDo: ::Options in search properties folders a) b) c) ...
+- ToDo: ::Options in search properties filetypes a) b) c) ...
+- ToDo: ::Options for editor file: "c:\Program Files\Notepad++\notepad++.exe" $F filename $L linenumber 1..n  $G Match string $C column number $E Filename without quotes added
+- ToDo: ::Options as commands
+- ToDo: ::Menübefehle als commandline commands first ;-)
+- ToDo: ::Look at http://www.codeproject.com/KB/cs/perlopcs.aspx
+- ToDo: ::Look at http://stackoverflow.com/questions/1122084/how-to-make-a-c-grep-more-functional-using-linq
+- ToDo: ::List of subfolders to skip
+- ToDo: ::Limit to max results (?per file?)
+OK: document.getElementById('youridhere').scrollIntoView();
+JQuery ScrollTo - see this sample code
+<a href="#myAnchorALongWayDownThePage">Click here to scroll</a> <A name='myAnchorALongWayDownThePage"></a>
+
+
+function absoluteOffset(elem) {
+return elem.offsetParent && elem.offsetTop + absoluteOffset(elem.offsetParent);
+}
+function scrollToElement(elem) {
+window.scroll(absoluteOffset(elem));
+}
+- ToDo: ::Let folders be assigned in search form
+- ToDo: ::Language for all texts and controls L18n ?
+- ToDo: ::Keep list of saved searches in common config
+- ToDo: ::Html view als geerbte klassen (trennen view zu daten)
+- ToDo: ::Fixed lenght
+- ToDo: ::find files newest each doensn't regard folder just date and ?equal? Aftercommand delete all older ?
+- ToDo: ::find equals : doesn't regard folders
+- ToDo: ::fileinfo above sort by row
+- ToDo: ::file result view: select which column to display
+- ToDo: ::Dateien anschauen können während die Suche läuft
+- ToDo: ::Datei unten anzeigen mit highlights
+- ToDo: ::Ctrl-C from input in search form is disabled ?
+- ToDo: ::Click on token file in token web view shall bring file in web filelits view
+- Done: ::Click on file in web file list shll make it fat
+- ToDo: ::Blanks in folder names
+- ToDo: ::Blanks in filenames
+- ToDo: ::Append Last opened/saved searched files in menu ;
+- ToDo: ::-> " \" token werden nicht richtig unterschieden TestClass ?
+- ToDo: ::? use regular expressen with parts of search ?
+- ToDo: ::? Use back-reference
+- ToDo: ::? Find in doc once ?
+- ToDo: ::? Einbinden der Parameter von standrd config in search config ? override  ? W.g. save search , load search with same configur ...
+- ToDo: ::? clsSearchresults verkleinern ?
+- ToDo: ::
+
+

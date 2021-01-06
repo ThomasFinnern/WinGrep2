@@ -1,0 +1,69 @@
+The collection class implements IEnumerable, which indicates it can be foreach'd over. The IEnumerator is the thing which does the iteration. You, the programmer, never actually see the IEnumerator; it's hidden behind the the foreach construct.
+view sourceprint?
+01.using System.Collections;
+02.using System.Collections.Generic;
+03.using MbUnit.Framework;
+04. 
+05.namespace EnumeratorDemo
+06.{
+07.    [TestFixture]
+08.    public class EnumeratorTest
+09.    {
+10.        public struct Element
+11.        {
+12.            private string propertyName;
+13.            private string legendString;
+14. 
+15.            public string PropertyName { get { return propertyName; } }
+16.            public string LegendString { get { return legendString; } }
+17. 
+18.            public Element(string propertyName, string legendString)
+19.            {
+20.                this.propertyName = propertyName;
+21.                this.legendString = legendString;
+22.            }
+23.        }
+24. 
+25.        public class Series : IEnumerable<Element>
+26.        {
+27.            private List<string> propertyNames;
+28.            private List<string> legendStrings;
+29. 
+30.            public Series(List<string> propertyNames, List<string> legendStrings)
+31.            {
+32.                this.propertyNames = propertyNames;
+33.                this.legendStrings = legendStrings;
+34.            }
+35. 
+36.            public IEnumerator<Element> GetEnumerator()
+37.            {
+38.                int i = 0;
+39.                foreach (string propertyName in propertyNames)
+40.                {
+41.                    yield return new Element(propertyName, i < legendStrings.Count ? legendStrings[i] : string.Empty);
+42.                    ++i;
+43.                }
+44.            }
+45. 
+46.            IEnumerator IEnumerable.GetEnumerator()
+47.            {
+48.                return this.GetEnumerator();
+49.            }
+50.        }
+51. 
+52.        [Test]
+53.        public void Test()
+54.        {
+55.            List<Element> series = new List<Element>();
+56.            foreach (Element element in new Series(new List<string>(){"prop1", "prop2"},
+57.                                                   new List<string>(){"leg1"}))
+58.            {
+59.                series.Add(element);
+60.            }
+61. 
+62.            Assert.AreEqual(2, series.Count);
+63.            Assert.Contains(series, new Element("prop1", "leg1"));
+64.            Assert.Contains(series, new Element("prop2", string.Empty));
+65.        }
+66.    }
+67.}

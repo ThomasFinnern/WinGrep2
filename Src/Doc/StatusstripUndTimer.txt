@@ -1,0 +1,27 @@
+http://www.java2s.com/Code/CSharp/GUI-Windows-Form/StatusStripExample.htm
+
+google c# +statusstrip +timer
+
+google c# +statusstrip +timer Directory.GetFiles
+
+google c# +statusstrip +"Directory.GetFiles"
+
+use a background worker that REPORTSPROGRESS = true;
+
+DO_WORK
+
+OPEN THE FILE!
+
+int iteration = progressBar1.Maximum / 100;
+
+for (int i = 0; i < progressBar1.Maximum; i++)
+
+{
+
+backgroundWorker1.ReportProgress(i / iteration)
+
+}
+
+
+
+

@@ -1,0 +1,18 @@
+csharp webbrowser ObjectForScripting
+
+google csharp webbrowser events
+
+
+
+http://msdn.microsoft.com/en-us/library/a0746166.aspx
+
+
+http://msdn.microsoft.com/en-US/library/system.windows.forms.webbrowser.objectforscripting.aspx
+
+http://bytes.com/topic/c-sharp/answers/555577-adding-click-event-web-browser-control
+
+
+
+
+
+

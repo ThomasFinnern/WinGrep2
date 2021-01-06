@@ -1,0 +1,60 @@
+7.58.1.Implements IEnumerator
+using System;
+using System.Collections;
+
+class User {
+    public User(string name) { this.name = name; }
+    string name;
+    public string Name { get { return name; } }
+};
+
+class DBManager : IEnumerable {
+    public DBManager() {
+        onlineUsers.Add(new User("T"));
+        onlineUsers.Add(new User("K"));
+        onlineUsers.Add(new User("E"));
+    }
+    ArrayList onlineUsers = new ArrayList();
+
+    public IEnumerator GetEnumerator() {
+        return new Enumerator(onlineUsers);
+    }
+
+    class Enumerator : IEnumerator {
+        const string INVALID_RECORD = "Use MoveNext before calling Current";
+
+        public Enumerator(ArrayList onlineUsers) {
+            foreach (User user in onlineUsers) {
+                this.onlineUsers.Add(user);
+            }
+            Reset();
+        }
+        ArrayList onlineUsers = new ArrayList();
+
+        int index;
+        public bool MoveNext() {
+            return (++index < onlineUsers.Count);
+        }
+
+        public object Current {
+            get {
+                if (-1 == index)
+                    throw new InvalidOperationException(INVALID_RECORD);
+                if (index < onlineUsers.Count)
+                    return onlineUsers[index];
+                else
+                    return null;
+            }
+        }
+        public void Reset() { index = -1; }
+    }
+    static void Main(string[] args) {
+        DBManager db = new DBManager();
+        IEnumerator e = db.GetEnumerator();
+
+        while (e.MoveNext()) {
+            User user = (User)e.Current;
+            Console.WriteLine("User={0}", user.Name);
+        }
+    }
+}

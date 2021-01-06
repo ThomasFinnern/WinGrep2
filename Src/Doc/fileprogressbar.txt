@@ -1,0 +1,47 @@
+
+
+http://social.msdn.microsoft.com/Forums/en-US/csharpgeneral/thread/7a725276-658c-4b49-8ec8-fcad1ea0927d/
+
+But if you want to load many files under a directory, simply get the count of the files by dir.GetFiles().Count and again calculate the step value with (100/filecount) and after each file is loaded call performStep()
+
+private void GetFilesFromDirectory(DirectoryInfo dir)
+{
+            toolStripProgressBarr.Value = 0;
+            FileInfo[] fileList;
+
+            fileList = dir.GetFiles();
+
+            .......
+
+            //
+            // if there are files in the directory..
+            //
+            if (fileList.Length > 0)
+            {
+                double count = (100 / fileList.Length);
+                toolStripProgressBarr.Step = (int)count;
+              
+                ........
+
+                foreach (FileInfo f in fileList)
+                {
+                    toolStripProgressBarr.PerformStep();
+                    toolStripProgressBarr.Invalidate();
+                    this.Update();
+
+                   ........
+
+                }
+
+            ..........
+
+            }
+    .........
+
+}^
+
+
+
+
+
+

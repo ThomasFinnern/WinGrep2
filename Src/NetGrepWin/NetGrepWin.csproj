@@ -1,0 +1,538 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="15.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{ED601DC0-34C2-40AE-A8ED-0EDD48C8D9D6}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>NetGrep</RootNamespace>
+    <AssemblyName>NetGrepWin</AssemblyName>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetZone>LocalIntranet</TargetZone>
+    <GenerateManifests>false</GenerateManifests>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <ManifestCertificateThumbprint>259A9CF8F5FC9DCE8F35242BBEBEAD0CED9FC0E0</ManifestCertificateThumbprint>
+    <ManifestKeyFile>NetGrepWin_1_TemporaryKey.pfx</ManifestKeyFile>
+    <SignManifests>false</SignManifests>
+    <ApplicationIcon>2012-11-02_112826C.ico</ApplicationIcon>
+    <PublishUrl>..\..\NetGrepGroup.2005Deploy\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>true</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <UpdateUrl>http://localhost/NetGrepWin/</UpdateUrl>
+    <ProductName>NetGrep</ProductName>
+    <PublisherName>InsideTheMachine</PublisherName>
+    <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
+    <WebPage>index.htm</WebPage>
+    <ApplicationRevision>1</ApplicationRevision>
+    <ApplicationVersion>0.20.35.01</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\LibCmdLine\clsCmdLineToken.cs">
+      <Link>LibCmdLine\clsCmdLineToken.cs</Link>
+    </Compile>
+    <Compile Include="..\LibCmdLine\clsCommandBase.cs">
+      <Link>LibCmdLine\clsCommandBase.cs</Link>
+    </Compile>
+    <Compile Include="..\LibCmdLine\clsCommandLine.cs">
+      <Link>LibCmdLine\clsCommandLine.cs</Link>
+    </Compile>
+    <Compile Include="..\LibCmdLine\clsOptionsBase.cs">
+      <Link>LibCmdLine\clsOptionsBase.cs</Link>
+    </Compile>
+    <Compile Include="..\LibCmdLine\frmCommandLine.cs">
+      <Link>LibCmdLine\frmCommandLine.cs</Link>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="..\LibCmdLine\frmCommandLine.designer.cs">
+      <Link>LibCmdLine\frmCommandLine.designer.cs</Link>
+      <DependentUpon>frmCommandLine.cs</DependentUpon>
+    </Compile>
+    <Compile Include="..\LibConfig\clsAppPaths.cs">
+      <Link>LibConfig\clsAppPaths.cs</Link>
+    </Compile>
+    <Compile Include="..\LibConfig\clsAppPathsBase.cs">
+      <Link>LibConfig\clsAppPathsBase.cs</Link>
+    </Compile>
+    <Compile Include="..\LibConfig\clsConfigBase.cs">
+      <Link>LibConfig\clsConfigBase.cs</Link>
+    </Compile>
+    <Compile Include="..\LibConfig\clsConfigSpezialBase.cs">
+      <Link>LibConfig\clsConfigSpezialBase.cs</Link>
+    </Compile>
+    <Compile Include="..\LibConfig\clsExistingPath.cs">
+      <Link>LibConfig\clsExistingPath.cs</Link>
+    </Compile>
+    <Compile Include="..\LibConfig\clsUserConfigFiles.cs">
+      <Link>LibConfig\clsUserConfigFiles.cs</Link>
+    </Compile>
+    <Compile Include="..\LibDebugLog\clsDebLog.cs">
+      <Link>LibDebugLog\clsDebLog.cs</Link>
+    </Compile>
+    <Compile Include="..\LibErrorInfo\clsErrorCapture.cs">
+      <Link>LibErrorInfo\clsErrorCapture.cs</Link>
+    </Compile>
+    <Compile Include="..\LibErrorInfo\clsLogError.cs">
+      <Link>LibErrorInfo\clsLogError.cs</Link>
+    </Compile>
+    <Compile Include="..\LibErrorInfo\clsLogErrors.cs">
+      <Link>LibErrorInfo\clsLogErrors.cs</Link>
+    </Compile>
+    <Compile Include="..\LibErrorInfo\ErrorInfo.cs">
+      <Link>LibErrorInfo\ErrorInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\LibGeneral\clsActiveMainForm.cs">
+      <Link>LibGeneral\clsActiveMainForm.cs</Link>
+    </Compile>
+    <Compile Include="..\LibGeneral\clsEncapsulatedListBase.cs">
+      <Link>LibGeneral\clsEncapsulatedListBase.cs</Link>
+    </Compile>
+    <Compile Include="..\LibGeneral\clsExecuteExternalApp.cs">
+      <Link>LibGeneral\clsExecuteExternalApp.cs</Link>
+    </Compile>
+    <Compile Include="..\LibGeneral\clsLastOpenedFiles.cs">
+      <Link>LibGeneral\clsLastOpenedFiles.cs</Link>
+    </Compile>
+    <Compile Include="..\LibGeneral\clsLastUsedSearchQueries.cs">
+      <Link>LibGeneral\clsLastUsedSearchQueries.cs</Link>
+    </Compile>
+    <Compile Include="..\LibGeneral\clsObjectListFixedLength.cs">
+      <Link>LibGeneral\clsObjectListFixedLength.cs</Link>
+    </Compile>
+    <Compile Include="..\LibGeneral\clsReopenClosedFiles.cs">
+      <Link>LibGeneral\clsReopenClosedFiles.cs</Link>
+    </Compile>
+    <Compile Include="..\LibGeneral\clsStdFileDateTime.cs">
+      <Link>LibGeneral\clsStdFileDateTime.cs</Link>
+    </Compile>
+    <Compile Include="..\LibGeneral\clsTokenListFixedLength.cs">
+      <Link>LibGeneral\clsTokenListFixedLength.cs</Link>
+    </Compile>
+    <Compile Include="..\LibGeneral\LibStringFunctions.cs">
+      <Link>LibGeneral\LibStringFunctions.cs</Link>
+    </Compile>
+    <Compile Include="..\LibGeneral\LibStringsUtf8.cs">
+      <Link>LibGeneral\LibStringsUtf8.cs</Link>
+    </Compile>
+    <Compile Include="..\LibGeneral\LibVbReplacements.cs">
+      <Link>LibGeneral\LibVbReplacements.cs</Link>
+    </Compile>
+    <Compile Include="clsBackupFoldersToken.cs" />
+    <Compile Include="clsLogInputKeys.cs" />
+    <Compile Include="clsResultsOfOneSearch.cs" />
+    <Compile Include="clsEventArgsWithOneMessage.cs" />
+    <Compile Include="clsReopenClosedFiles.cs" />
+    <Compile Include="clsSearchResultTokenLinesAsRtf.cs" />
+    <Compile Include="clsSearchViewProperties.cs" />
+    <Compile Include="clsSurroundingFileLines.cs" />
+    <Compile Include="clsHtmlEncode.cs" />
+    <Compile Include="clsJobs.cs" />
+    <Compile Include="clsReplaceInFile.cs" />
+    <Compile Include="clsReplaceInFiles.cs" />
+    <Compile Include="clsReplaceStringToken.cs" />
+    <Compile Include="clsSearchFilesInFoldersIEnumerator.cs" />
+    <Compile Include="clsFileResults.cs" />
+    <Compile Include="clsFileSpecificationToken.cs" />
+    <Compile Include="clsGrepTokenListBase.cs" />
+    <Compile Include="clsLineIEnumerable.cs" />
+    <Compile Include="clsOneStringPerTime.cs" />
+    <Compile Include="clsSearchExecute.cs" />
+    <Compile Include="clsSearchInLines.cs" />
+    <Compile Include="clsSearchPropertiesTestRegExSearch.cs" />
+    <Compile Include="clsSearchPropertiesTestTextSearch.cs" />
+    <Compile Include="clsSearchRegularExpression.cs" />
+    <Compile Include="clsSearchResultFileListAsHtml.cs" />
+    <Compile Include="clsSearchFoldersToken.cs" />
+    <Compile Include="clsSearchProperties.cs" />
+    <Compile Include="clsHtmlBaseLib.cs" />
+    <Compile Include="clsHtmlContentBase.cs" />
+    <Compile Include="clsHtmlContentText.cs" />
+    <Compile Include="clsHtmlDocType.cs" />
+    <Compile Include="clsHtmlElement.cs" />
+    <Compile Include="clsHtmlPage.cs" />
+    <Compile Include="clsHtmlProperties.cs" />
+    <Compile Include="clsHtmlProperty.cs" />
+    <Compile Include="clsHtmlStdElements.cs" />
+    <Compile Include="clsLineResult.cs" />
+    <Compile Include="clsResultInfoInLine.cs" />
+    <Compile Include="clsSearchResultInfo.cs" />
+    <Compile Include="clsSearchResults.cs" />
+    <Compile Include="clsSearchResultTokenLinesAsHtml.cs" />
+    <Compile Include="clsSearchStringToken.cs" />
+    <Compile Include="clsSurroundingLinesPara.cs" />
+    <Compile Include="clsTestRegExSearchData.cs" />
+    <Compile Include="clsTestTextSearchData.cs" />
+    <Compile Include="CtrlOptionTools.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CtrlOptionTools.Designer.cs">
+      <DependentUpon>CtrlOptionTools.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CtrlOptionOnStartOfProgram.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CtrlOptionOnStartOfProgram.Designer.cs">
+      <DependentUpon>CtrlOptionOnStartOfProgram.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmAboutBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAboutBox.designer.cs">
+      <DependentUpon>frmAboutBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmCopyFileNames2ClipBoard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCopyFileNames2ClipBoard.Designer.cs">
+      <DependentUpon>frmCopyFileNames2ClipBoard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmDummyPlaceHolder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDummyPlaceHolder.Designer.cs">
+      <DependentUpon>frmDummyPlaceHolder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmOptFileSpecificationToken.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmOptFileSpecificationToken.Designer.cs">
+      <DependentUpon>frmOptFileSpecificationToken.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmOptFolderToken.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmOptFolderToken.Designer.cs">
+      <DependentUpon>frmOptFolderToken.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmOptions.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmOptions.Designer.cs">
+      <DependentUpon>frmOptions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmOptSearchStringToken.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmOptSearchStringToken.Designer.cs">
+      <DependentUpon>frmOptSearchStringToken.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmRegexExpressionsView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmRegexExpressionsView.Designer.cs">
+      <DependentUpon>frmRegexExpressionsView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmResultsPrintPreview.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmResultsPrintPreview.Designer.cs">
+      <DependentUpon>frmResultsPrintPreview.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSearchFileTypeList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSearchFileTypeList.Designer.cs">
+      <DependentUpon>frmSearchFileTypeList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSearchFolderList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSearchFolderList.Designer.cs">
+      <DependentUpon>frmSearchFolderList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSearchProperties.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSearchProperties.Designer.cs">
+      <DependentUpon>frmSearchProperties.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSearchResultView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSearchResultView.Designer.cs">
+      <DependentUpon>frmSearchResultView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSearchResultRichTextView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSearchResultRichTextView.Designer.cs">
+      <DependentUpon>frmSearchResultRichTextView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSearchTokenList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSearchTokenList.Designer.cs">
+      <DependentUpon>frmSearchTokenList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmTestTextSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTestTextSearch.Designer.cs">
+      <DependentUpon>frmTestTextSearch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmTestTRegularExpressionSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTestTRegularExpressionSearch.Designer.cs">
+      <DependentUpon>frmTestTRegularExpressionSearch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmReplaceProperties.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmReplaceProperties.Designer.cs">
+      <DependentUpon>frmReplaceProperties.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmNetGrepWinProgram.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmNetGrepWinProgram.Designer.cs">
+      <DependentUpon>frmNetGrepWinProgram.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmUsedPathView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmUsedPathView.Designer.cs">
+      <DependentUpon>frmUsedPathView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CtrlOptionWhileSearching.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CtrlOptionWhileSearching.Designer.cs">
+      <DependentUpon>CtrlOptionWhileSearching.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LibGeneral\LibStringFileFolderNames.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Program\CmdLine\clsCmdLineConfig.cs" />
+    <Compile Include="Program\CmdLine\clsCommandLineCmdDefinition.cs" />
+    <Compile Include="Program\CmdLine\LibCommandLineFunctions.cs" />
+    <Compile Include="Program\Config\clsConfigNetGrep.cs" />
+    <Compile Include="Program\MainGlobal\clsMainGlobal.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="..\LibCmdLine\frmCommandLine.resx">
+      <Link>LibCmdLine\frmCommandLine.resx</Link>
+      <DependentUpon>frmCommandLine.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CtrlOptionTools.resx">
+      <DependentUpon>CtrlOptionTools.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CtrlOptionOnStartOfProgram.resx">
+      <DependentUpon>CtrlOptionOnStartOfProgram.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAboutBox.resx">
+      <DependentUpon>frmAboutBox.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCopyFileNames2ClipBoard.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmCopyFileNames2ClipBoard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDummyPlaceHolder.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmDummyPlaceHolder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmOptFileSpecificationToken.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmOptFileSpecificationToken.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmOptFolderToken.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmOptFolderToken.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmOptions.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmOptions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmOptSearchStringToken.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmOptSearchStringToken.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmRegexExpressionsView.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmRegexExpressionsView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmResultsPrintPreview.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmResultsPrintPreview.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSearchFileTypeList.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmSearchFileTypeList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSearchFolderList.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmSearchFolderList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSearchProperties.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmSearchProperties.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSearchResultView.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmSearchResultView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSearchResultRichTextView.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmSearchResultRichTextView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSearchTokenList.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmSearchTokenList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTestTextSearch.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmTestTextSearch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTestTRegularExpressionSearch.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmTestTRegularExpressionSearch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmNetGrepWinProgram.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmNetGrepWinProgram.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmReplaceProperties.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmReplaceProperties.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmUsedPathView.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmUsedPathView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CtrlOptionWhileSearching.resx">
+      <DependentUpon>CtrlOptionWhileSearching.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CtrlOptionSearchResultView.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>CtrlOptionSearchResultView.cs</DependentUpon>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <BaseApplicationManifest Include="Properties\app.manifest" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="CtrlOptionSearchResultView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CtrlOptionSearchResultView.Designer.cs">
+      <DependentUpon>CtrlOptionSearchResultView.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 2.0</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="2012-11-02_112826C.ico" />
+    <Content Include="FileList.css" />
+    <Content Include="TokenList.css" />
+    <None Include="NetGrepWin_1_TemporaryKey.pfx" />
+    <None Include="NetGrepWin_TemporaryKey.pfx" />
+    <None Include="Resources\seitenansichtToolStripMenuItem.Image1.png" />
+    <None Include="Resources\TestIcon1.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <PublishFile Include="FileList.css">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>DataFile</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>File</FileType>
+    </PublishFile>
+    <PublishFile Include="TokenList.css">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>DataFile</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>File</FileType>
+    </PublishFile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Config\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

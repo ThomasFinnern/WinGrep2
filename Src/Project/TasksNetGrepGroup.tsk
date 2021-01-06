@@ -1,0 +1,53 @@
+// SimpleTaskFile: TasksNetGrepGroup, FileId: Base@20121230_155210.734, Version: 0.1::
+// [.-%+*@!] {Prio Signs}  '.':             Just an idea, '-':             Afterthought, '%':             In the future, '+':             Nice to have, '*':             Standard, '@':             For fun, '!':             Error
+//   '.':            Just an idea (1)
+//   '-':            Afterthought (2)
+//   '%':            In the future (4)
+//   '+':            Nice to have (8)
+//   '*':            Standard (16)
+//   '@':            For fun (32)
+//   '!':            Error (64)
+- ToDo: !!!!!..::check replace all todo's in may be donw today ... 
+- ToDo: !!!!!.::Open folders in Grid instead of single controls or better ...   (Use .... button insiode ..)
+- ToDo: !!!!!::Test Files deleted in between in between a) Search b) research c) search in found files d) open close search -> dieplay results
+- ToDo: !!!!::Class for starting on pos and size of last start Attention : Widow 2 does not exists  or it doesn't fit into act Window
+- ToDo: !!!::Replace: a) Test Utf - 8 und ÖÜÄ ohne
+- ToDo: !!!::Line numbers for following lines
+- ToDo: %%%%%%!!%%%..::Search property window : close with ESC (? Other
+- ToDo: %%%%%%!!%%%::Application just for going through all driectories and file names using interrupt and later on threads
+- ToDo: !!::No fall down on hidden or forbidden folder / file ...
+- ToDo: !!::Grosses Icon bei einzel MDI ansicht (Cascade ok)
+- ToDo: !!::Datei Datum bei ersetzen beachten neuere nicht überschreiben
+- ToDo: !!::Datei Datum beachten ? search in ?
+
+- ToDo: !::Win 7: Start on c:\programme: Absturz, da er die Daten (HTML) nicht schreiben kann . Wo schreibt er hin ? -> anzeige ?
+- ToDo: !::HTML inside onkey ....
+- ToDo: ***::Automatically save searches (input somehow) so i can reassign an old search -> last used searches ? on close win close search
+- ToDo: *::Own Icon
+- ToDo: %%::Send to
+- ToDo: %%::Select an Editor
+- ToDo: %%::Search in Zip files (7z ...)
+- ToDo: %%::Open with
+- ToDo: %%::No subfolders
+- ToDo: %%::Menü in explorer
+- ToDo: %%::Limit size
+- ToDo: %%::Include Hidden files
+- ToDo: %%::Exclude folder
+- ToDo: %%::Exclude files
+- ToDo: %%::Character as hex or \x or <012>
+- ToDo: %%::Button for UTF-8 ... . Select encoding
+- ToDo: %%::Button check regex
+- ToDo: %%::Backup directory
+- ToDo: %%::Auto update
+- ToDo: %%::?? Dot symbolyses newline / Multiline
+- ToDo: %%::
+- ToDo: %::Export pathfilelist, filelist, filelist no extension and folderlist of found files
+- ToDo: ...::filelist CSS : read instead of assign call line to text -> security . examples exist in internet : style
+- ToDo: ..::See whats happening, which folder / Files are searched
+- ToDo: ..::Klick in obere soll ausgewählte highlighten
+- ToDo: .::Suchen in Ergebnis file
+- Done: ...::Teste schlechte RegEx Eingabe 'prioweight.*in.*)' in 'D:\Pr004\Entwickl.2012\MayBeDoneToday' ==> Frühzeitiger Abbruch
+- Done: *.::CTRL-N tut nicht (Absturz)
+- Done: **::Suche nach ' ergibt &apos;
+- Done: **::Ctrl-F6 (shift) Fenster wechseln
+

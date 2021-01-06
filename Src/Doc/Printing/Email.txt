@@ -1,0 +1,11 @@
+Kleiner Hinweis - auf diese Weise lässt sich zwar wunderbar drucken (also per Zeichnung von Hand), allerdings ist es auch sehr umständlich für größere Mengen an Daten (wie Diagramme / Protokolle etc)... daher von mir der Tipp: ein UserControl mit allen benötigten Anzeigeelementen zusammenstellen (Chart, Labels, Images), Breite und Höhe auf DinA4 setzen (auf die Auflösung in dpi aufpassen) und anschließend ganz einfach das UserControl drucken:
+
+[CODE]
+private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e) {
+Bitmap bmp = new Bitmap(this.Width, this.Height);
+this.DrawToBitmap(bmp, new Rectangle(0, 0, bmp.Width, bmp.Height));
+e.Graphics.DrawImage(bmp, 0, 0, bmp.Width, bmp.Height);
+}
+[/CODE]
+
+Das Control muss dafür nicht zwingend angezeigt werden. Es soll nicht verschwiegen werden, dass es kann zu kleineren Abstrichen in der Darstellung kommen kann (z.B. bei ListViews), aber es ist immer noch besser als ALLES von Hand zu zeichnen.
