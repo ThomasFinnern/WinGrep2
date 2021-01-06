@@ -25,31 +25,31 @@ Now i intent to improve it step by step. Actually the 'old' and still nearly dai
 * Use of regex (C# style)
 * 'Search again' Key
 * Saving of search results
+* Saving and retrieval of search criteria
 * Command line interface
 * Saving and retrieval of search criteria
 * Click on file in above will open complete file with highlighted search results (Nochanges possible though)
+* Command line interface
 * .
 * .
 *
 
-#### Drawbacks (06.01.2021)
+### Drawbacks (06.01.2021)
 
 These points will be fixed next
 * Results are not asynchron displayed and the screen freezes while searching
 * Due to pre c# asyn functions the result is sometimes displayed but not acceptet -> After popup Question the results vanish but can be retrieved without search again
 * Needs administrator rights due to read of config files from program folder
 
-#### Not developed now
+#### Missing features of "Windows grep"
 
 * Printing of search results
-* Command line interface
-* Saving and retrieval of search criteria
 * Fully multi-tasking
 * ZIP file searching
 * Delimited and fixed width data file searching at field-level.
 * Explorer Extension
 
 
-# Disclaimer
+## Disclaimer
 
 Sorry the software is as it i. No guarantee for proper result. Especially make a backup before search and replace.
