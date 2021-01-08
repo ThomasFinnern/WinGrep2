@@ -36,35 +36,6 @@ namespace NetGrep
             ExecuteAppCommandsFromCmdLine();            
         }
 
-        public void ExecuteAppCommandsFromCmdLine()
-        {
-            try
-            {
-                // ToDo: show debug inside form or show at least the actual comnmand
-                frmCommandLine CheckCommands = new frmCommandLine();
-
-                CheckCommands.AppReadAndParseCmdLine();
-                if (CheckCommands.AppCommands.Args.Count > 0 || CheckCommands.AppCommands.Opts.Count > 0)
-                {
-                    Application.DoEvents();
-
-                    CheckCommands.bDoExecuteAppCommands = true;
-                    //CheckCommands.Show(this);
-                    CheckCommands.ShowDialog(this);
-                }
-            }
-            catch (Exception Ex)
-            {
-                clsErrorCapture ErrCapture = new clsErrorCapture(Ex);
-                ErrCapture.ShowExeption();
-            }
-        }
-
-        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
         private void NetGrepWinProgram_Load(object sender, EventArgs e)
         {
             try
@@ -91,8 +62,8 @@ namespace NetGrep
 
 
                 // Open files on closing  ToDo: :: SearchResult or Search query ? -> extension
-                if (   (   Global.Config.bDoLoadLastOpenSearchesOnStart
-                        || Global.CmdLineConfig.bDoLoadLastOpenSearchesOnStart) 
+                if (  (    Global.Config.bDoLoadLastOpenSearchesOnStart
+                        || Global.CmdLineConfig.bDoLoadLastOpenSearchesOnStart)
                     && !Global.CmdLineConfig.bDontLoadLastOpenSearchesOnStart)
                 {
                     // includes LastUsedSearchResults
@@ -127,6 +98,38 @@ namespace NetGrep
                 clsErrorCapture ErrCapture = new clsErrorCapture(Ex);
                 ErrCapture.ShowExeption();
             }
+        }
+
+        public void ExecuteAppCommandsFromCmdLine()
+        {
+            try
+            {
+                // ToDo: show debug inside form or show at least the actual comnmand
+                frmCommandLine CheckCommands = new frmCommandLine();
+
+                CheckCommands.AppReadAndParseCmdLine();
+                if (CheckCommands.AppCommands.Args.Count > 0 || CheckCommands.AppCommands.Opts.Count > 0)
+                {
+                    Application.DoEvents();
+
+                    CheckCommands.bDoExecuteAppCommands = true;
+                    //CheckCommands.Show(this);
+                    CheckCommands.ShowDialog(this);
+
+					// 2021.01.07
+                    CmdLinePathFileNamesList = CheckCommands.AppCommands.FileListFromLeftOverCommands();
+                }
+            }
+            catch (Exception Ex)
+            {
+                clsErrorCapture ErrCapture = new clsErrorCapture(Ex);
+                ErrCapture.ShowExeption();
+            }
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
 
         // Last search results (single form)
@@ -340,11 +343,11 @@ namespace NetGrep
             bool bAlt = false;
             bool bCtrl = false;
 
-            // •WM_KEYDOWN is 0x100 (256),
-            // •WM_KEYUP is 0x101 (257),
-            // •WM_CHAR (roughly equivalent to KeyPress) is 0x102 (258),
-            // •WM_SYSKEYDOWN is 0x104 (260),
-            // •WM_SYSKEYUP is 0x105 (261).
+            // ï¿½WM_KEYDOWN is 0x100 (256),
+            // ï¿½WM_KEYUP is 0x101 (257),
+            // ï¿½WM_CHAR (roughly equivalent to KeyPress) is 0x102 (258),
+            // ï¿½WM_SYSKEYDOWN is 0x104 (260),
+            // ï¿½WM_SYSKEYUP is 0x105 (261).
 
             //Global.LogInputKeys.AddKeyValue("PrP", keys);
 

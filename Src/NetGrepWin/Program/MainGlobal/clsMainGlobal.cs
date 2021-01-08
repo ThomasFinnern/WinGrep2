@@ -42,6 +42,8 @@ namespace MainGlobal
             set { moLogError = value; }
         }
 
+		// ToDo: types
+
         private static clsSearchProperties mDoCmdGrepProperties = null;
         public static clsSearchProperties DoCmdGrepProperties
         {
@@ -56,6 +58,7 @@ namespace MainGlobal
             set { mDoCmdSearchResults = value; }
         }
 
+
         private static clsConfigNetGrep mConfig = clsConfigNetGrep.LoadClassOrCreateUserFile();
         public static clsConfigNetGrep Config
         {
@@ -63,11 +66,25 @@ namespace MainGlobal
             set { mConfig = value; }
         }
 
-        private static clsCmdLineConfig mCmdLineConfig =  new clsCmdLineConfig(); 
+        private static clsCmdLineConfig mCmdLineConfig =  new clsCmdLineConfig();
         public static clsCmdLineConfig CmdLineConfig
         {
             get { return mCmdLineConfig; }
             set { mCmdLineConfig = value; }
+        }
+
+        private static clsLastOpenedFiles mUserLastOpenedFilesList = null; // clsLastOpenedFiles.LoadClassOrCreateUserFile();
+        public static clsLastOpenedFiles UserLastOpenedFilesList
+        {
+            get { return mUserLastOpenedFilesList; }
+            set { mUserLastOpenedFilesList = value; }
+        }
+
+        private static clsLastUsedSearchQueries mLastUsedSearchQueries = null; // new clsSearchStringToken ().LoadClassOrCreateUserFile();
+        public static clsLastUsedSearchQueries LastUsedSearchQueries
+        {
+            get { return mLastUsedSearchQueries; }
+            set { mLastUsedSearchQueries = value; }
         }
 
         private static clsSearchStringToken mSearchStringTokens = null; // new clsSearchStringToken ().LoadClassOrCreateUserFile();
@@ -105,20 +122,6 @@ namespace MainGlobal
             set { mSearchFoldersToken = value; }
         }
 
-        private static clsLastUsedSearchQueries mLastUsedSearchQueries = null; // new clsSearchStringToken ().LoadClassOrCreateUserFile();
-        public static clsLastUsedSearchQueries LastUsedSearchQueries
-        {
-            get { return mLastUsedSearchQueries; }
-            set { mLastUsedSearchQueries = value; }
-        }
-
-        private static clsLastOpenedFiles mUserLastOpenedFilesList = null; // clsLastOpenedFiles.LoadClassOrCreateUserFile();
-        public static clsLastOpenedFiles UserLastOpenedFilesList
-        {
-            get { return mUserLastOpenedFilesList; }
-            set { mUserLastOpenedFilesList = value; }
-        }
-
         /**
         private static clsLogInputKeys mLogInputKeys = new clsLogInputKeys(); // clsLastOpenedFiles.LoadClassOrCreateUserFile();
         public static clsLogInputKeys LogInputKeys
@@ -129,56 +132,66 @@ namespace MainGlobal
         /**/
 
         /// <summary>
-        /// Initializes all globel neede object of this application
+        /// Initializes all global needed object of this application
         /// </summary>
         public static void InitGlobalObjects()
         {
-            Global.oDebugLog.LogFileName = Global.oDebugLog.StdLogPathFileName;
-            Global.oDebugLog.bWrite2FileLog = true;
-            Global.oDebugLog.WriteLog("Logfile " + Application.ProductName + ": " + clsStdFileDateTime.StdFileDateTimeFormatString() + "\r\n", true); // Resets file
-            Global.oDebugLog.WriteLog(System.Text.Encoding.Default.ToString() + "\r\n");
-            Global.oDebugLog.DPrint("- Standard initialisation ");
+            try
+            {
+                Global.oDebugLog.LogFileName = Global.oDebugLog.StdLogPathFileName;
+                Global.oDebugLog.bWrite2FileLog = true;
+                Global.oDebugLog.WriteLog("Logfile " + Application.ProductName + ": " + clsStdFileDateTime.StdFileDateTimeFormatString() + "\r\n", true); // Resets file
+                Global.oDebugLog.WriteLog(System.Text.Encoding.Default.ToString() + "\r\n");
+                Global.oDebugLog.DPrint("- Standard initialisation ");
+    
+                clsSearchStringToken.AssignStandardFileName();
+                Global.SearchStringTokens = clsSearchStringToken.LoadClassOrCreateUserFile();
+    
+                clsReplaceStringToken.AssignStandardFileName();
+                Global.ReplaceStringTokens = clsReplaceStringToken.LoadClassOrCreateUserFile();
+    
+                clsFileSpecificationToken.AssignStandardFileName();
+                Global.FileSpecificationToken = clsFileSpecificationToken.LoadClassOrCreateUserFile();
+    
+                clsBackupFoldersToken.AssignStandardFileName();
+                Global.BackupFoldersToken = clsBackupFoldersToken.LoadClassOrCreateUserFile();
+    
+                clsSearchFoldersToken.AssignStandardFileName();
+                Global.SearchFoldersToken = clsSearchFoldersToken.LoadClassOrCreateUserFile();
+    
+                clsLastOpenedFiles.AssignStandardFileName();
+                Global.UserLastOpenedFilesList = clsLastOpenedFiles.LoadClassOrCreateUserFile();
+    
+                clsLastUsedSearchQueries.AssignStandardFileName();
+                Global.LastUsedSearchQueries = clsLastUsedSearchQueries.LoadClassOrCreateUserFile();
+    
+                clsUserConfigFiles UserConfigFiles = new clsUserConfigFiles();
+    
+                UserConfigFiles.CfgFileList.Add("FileList.css");
+                UserConfigFiles.CfgFileList.Add("TokenList.css");
+                UserConfigFiles.Check4ExistingFilesOrCopy ();
+    
+                // Init with standard user values
+                DoCmdGrepProperties = clsSearchProperties.LoadClassOrCreateUserFile(); // new clsSearchProperties ();
+                DoCmdGrepProperties.ViewSetting = Global.Config.ViewSetting.Clone();
+                DoCmdGrepProperties.ShowViewSelection = Global.Config.ShowViewSelection.Clone();
+    
 
-            clsSearchStringToken.AssignStandardFileName();
-            Global.SearchStringTokens = clsSearchStringToken.LoadClassOrCreateUserFile();
 
-            clsReplaceStringToken.AssignStandardFileName();
-            Global.ReplaceStringTokens = clsReplaceStringToken.LoadClassOrCreateUserFile();
-
-            clsFileSpecificationToken.AssignStandardFileName();
-            Global.FileSpecificationToken = clsFileSpecificationToken.LoadClassOrCreateUserFile();
-
-            clsBackupFoldersToken.AssignStandardFileName();
-            Global.BackupFoldersToken = clsBackupFoldersToken.LoadClassOrCreateUserFile();
-
-            clsSearchFoldersToken.AssignStandardFileName();
-            Global.SearchFoldersToken = clsSearchFoldersToken.LoadClassOrCreateUserFile();
-
-            clsLastOpenedFiles.AssignStandardFileName();
-            Global.UserLastOpenedFilesList = clsLastOpenedFiles.LoadClassOrCreateUserFile();
-
-            clsLastUsedSearchQueries.AssignStandardFileName();
-            Global.LastUsedSearchQueries = clsLastUsedSearchQueries.LoadClassOrCreateUserFile();
-
-            clsUserConfigFiles UserConfigFiles = new clsUserConfigFiles();
-
-            UserConfigFiles.CfgFileList.Add("FileList.css");
-            UserConfigFiles.CfgFileList.Add("TokenList.css");
-            UserConfigFiles.Check4ExistingFilesOrCopy ();
-
-            // Init with standard user values
-            DoCmdGrepProperties = clsSearchProperties.LoadClassOrCreateUserFile(); // new clsSearchProperties ();
-            DoCmdGrepProperties.ViewSetting = Global.Config.ViewSetting.Clone();
-            DoCmdGrepProperties.ShowViewSelection = Global.Config.ShowViewSelection.Clone();
-
-            // LogInputKeys = new clsLogInputKeys();
+            }
+            catch (Exception Ex)
+            {
+                clsErrorCapture ErrCapture = new clsErrorCapture(Ex);
+                ErrCapture.ShowExeption();
+            }
         }
 
+
+		// ToDo: Move to ...
         public static void AssignLastSearchQuery(clsSearchProperties LastUsedSearchQuery)
         {
             Global.LastUsedSearchQueries.AddUsedToken(LastUsedSearchQuery);
             Global.LastUsedSearchQueries.SaveClass2UserFile();
         }
-
     }
 }

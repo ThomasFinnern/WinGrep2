@@ -542,7 +542,7 @@ namespace CmdLine2005
 
             // ToDo: this.AssignOption (@"CfgFile=", @"=""Filename"": Select config file");
             // ToDo: this.AssignOption (@"InOutFile", @"=""Filename"": Exchange file for reading and writing of data"); 
-            this.AssignOption(@"NoAutoExit", "Commands form stay open after all commands are executed");
+            this.AssignOption(@"NoAutoExit", "Commands form stays open after all commands are executed");
             this.AssignOption(@"CloseAfterCommandsDone", "Program will exit when all is done");
             this.AssignOption(@"DontShowMessageBox", "Will not show messageboxes when a error occurs. The messages will be written into the logfile", 
                 delegate { 
@@ -558,6 +558,13 @@ namespace CmdLine2005
             //this.AssignCommand (@"DoTestClasses","Call the standard self tests of the used classes (If supported)", delegate );
             // ToDo: assign commandfile
             clsCommandsBase nextCmd = new clsCommandsBase(@"CmdFile", @"=""Filename"" Select command file to use for multiple commandlines",
+				//// langManager
+                //delegate 
+				//{ 
+				//	this.ActCmdObject.DoCommandsFromFile(this.ActCmdObject.ActiveCommand.Value, 
+				//	this.ActCmdObject.InOption("CmdPath").Value); 
+				//}	
+
                 delegate 
                 {
                     string FileName = ""; 
@@ -618,7 +625,7 @@ namespace CmdLine2005
         /// Simulate Option like comming from Commandline
         /// </summary>
         /// <param name="InOption">Option name</param>
-        /// <param name="Assignment">A value assigned to this óption</param>
+        /// <param name="Assignment">A value assigned to this ï¿½ption</param>
         public void AddCmdLineOption(string InOption, string Assignment)
         {
             if (InOption != string.Empty)
@@ -783,43 +790,6 @@ namespace CmdLine2005
         // Destinguish between options and commands
         public void ParseProgrammCmdLine()
         {
-            //string CmdLine;
-
-            // >>>> replaced by below
-            //Get command line arguments.
-            //String[] arguments;
-            //arguments = Environment.GetCommandLineArgs();
-            // CommandLine = String.Join(" ", arguments, 1, arguments.Length - 1);            
-            // <<<<<<
-
-            /* Second try
-            // Arguments on c# are already seperated
-            int Idx = 0;
-            foreach (string Arg in Environment.GetCommandLineArgs())
-            {
-                /*
-                if (Arg.StartsWith("-") || Arg.StartsWith("/"))
-                {
-                    OptionFromToken
-                ??? ParseProgrammCmdLine for Option ...
-                AddCmdLineOption
-                }
-                else
-                {
-                    CommandFromToken
-                    AddCmdLineCommand
-                }
-                * /
-
-                // First argument is exe itself
-                if (Idx > 0)
-                    mCmdLineInToken.ParseTokenArray(Arg);
-                Idx++;
-            }
-            */
-
-            //string[] Cmds = Environment.GetCommandLineArgs().;
-            //mCmdLineInToken.ParseTokenArray(Arg);
             int Idx = 0;
             List<string> Args = new List<string> ();
 
@@ -831,6 +801,7 @@ namespace CmdLine2005
                 else
                     Idx++;
             }
+
             if (Args.Count > 0)
                 mCmdLineInToken.ParseTokenArray(Args.ToArray ());
         }
@@ -852,7 +823,6 @@ namespace CmdLine2005
                     LocalOptions.bIsOptionEnabled = true;
                     // Value is true or false 
                     LocalOptions.bValue = mAssOptions[ActOption.Name].bIsOptionSet(ActOption.Value);
-
                 }
                 else
                 {
@@ -902,6 +872,7 @@ namespace CmdLine2005
             catch {
                 FullPath = "Not detectable";
             }
+
             OutTxt = "DoCommandsFromFile Path: " + CmdPath 
                 + " File:" + FileName 
                 + " FullPath:" + FullPath;
@@ -915,62 +886,69 @@ namespace CmdLine2005
             }
             else
             {
-                string UsePathFileName = Path.Combine(CmdPath, FileName);
-
-                if (!File.Exists(UsePathFileName))
+                try
                 {
-                    // string FullPath = Path.GetFullPath(UsePathFileName);
-                    OutTxt = "Command file does not exist: " + UsePathFileName 
-                        + ", \r\nFullPath: " + FullPath;
-                    Global.oDebugLog.MessageBox(OutTxt);
-                }
-                else
-                {
-                    // clsCommandLine oSaveActCmdObject = ActCmdObject;
-                    clsCommandLine oFileCommands = new clsCommandLine();
-                    // Access for user of class
-                    // ActCmdObject = oFileCommands;
-                    ChildCmdObject = oFileCommands;
+                    string UsePathFileName = Path.Combine(CmdPath, FileName);
 
-                    //FileStream CmdFile = File.OpenRead (FileName);  
-
-                    // Use known assignments
-                    oFileCommands.AssignedCommands = mAssCommands;
-                    oFileCommands.AssignedOptions = mAssOptions;
-                    // Keep actual option for child command file 
-                    TransferCopyOfAllAvailableOptions(oFileCommands);
-
-                    // Use every line from file seperately
-                    foreach (string ActCmdLine in File.ReadAllLines(UsePathFileName, Encoding.Default))
+                    if (!File.Exists(UsePathFileName))
                     {
-                        ActCmdLine.Trim();
-                        // Comment found ?
-                        if (ActCmdLine.Length > 0)
+                        // string FullPath = Path.GetFullPath(UsePathFileName);
+                        OutTxt = "Command file does not exist: " + UsePathFileName
+                            + ", \r\nFullPath: " + FullPath;
+                        Global.oDebugLog.MessageBox(OutTxt);
+                    }
+                    else
+                    {
+                        // clsCommandLine oSaveActCmdObject = ActCmdObject;
+                        clsCommandLine oFileCommands = new clsCommandLine();
+                        // Access for user of class
+                        // ActCmdObject = oFileCommands;
+                        ChildCmdObject = oFileCommands;
+
+                        //FileStream CmdFile = File.OpenRead (FileName);  
+
+                        // Use known assignments
+                        oFileCommands.AssignedCommands = mAssCommands;
+                        oFileCommands.AssignedOptions = mAssOptions;
+                        // Keep actual option for child command file 
+                        TransferCopyOfAllAvailableOptions(oFileCommands);
+
+                        // Use every line from file seperately
+                        foreach (string ActCmdLine in File.ReadAllLines(UsePathFileName, Encoding.Default))
                         {
-                            if (!ActCmdLine.StartsWith("//"))
+                            ActCmdLine.Trim();
+                            // Comment found ?
+                            if (ActCmdLine.Length > 0)
                             {
-                                oFileCommands.CommandLine = ActCmdLine;
-                                oFileCommands.CmdLineDoCommands();
+                                if (!ActCmdLine.StartsWith("//"))
+                                {
+                                    oFileCommands.CommandLine = ActCmdLine;
+                                    oFileCommands.CmdLineDoCommands();
+                                }
                             }
                         }
+
+                        // Transfer assigned options
+                        foreach (KeyValuePair<string, InOption> ChildInOption in ChildCmdObject.InOptionItems)
+                        {
+                            if (InOptionItems.ContainsKey(ChildInOption.Key))
+                                InOptionItems.Remove(ChildInOption.Key);
+                            InOptionItems.Add(ChildInOption.Key, ChildInOption.Value);
+                        }
+
+                        // Reassign to saved object
+                        // ActCmdObject = oSaveActCmdObject;
+                        this.ChildCmdObject = null;
+
+                        bIsDone = true;
                     }
-
-                    // Transfer assigned options
-                    foreach (KeyValuePair<string, InOption> ChildInOption in ChildCmdObject.InOptionItems)
-                    {
-                        if (InOptionItems.ContainsKey(ChildInOption.Key))
-                            InOptionItems.Remove(ChildInOption.Key);
-                        InOptionItems.Add(ChildInOption.Key, ChildInOption.Value);
-                    }
-
-                    // Reassign to saved object
-                    // ActCmdObject = oSaveActCmdObject;
-                    this.ChildCmdObject = null;
-
-                    bIsDone = true;
+                }
+                catch (Exception Ex)
+                {
+                    clsErrorCapture ErrCapture = new clsErrorCapture(Ex);
+                    ErrCapture.ShowExeption();
                 }
             }
-
             return bIsDone;
         }
 

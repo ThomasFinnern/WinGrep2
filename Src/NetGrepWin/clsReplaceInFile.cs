@@ -63,16 +63,16 @@ namespace NetGrep
                         + ".bk!";
 
                     // ToDo:: create tempfile for backup when backup is not requested. See below
-                    // Einen freien Tempärardateinamen abfragen 
-                    // VORSICHT: Der zurückgegebene Dateiname 
+                    // Einen freien Tempï¿½rardateinamen abfragen 
+                    // VORSICHT: Der zurï¿½ckgegebene Dateiname 
                     //' wird (als leere Datei) angelegt! 
                     //strTempFile = IO.Path.GetTempFileName 
 
-                    //' Einen StreamWriter für das Schreiben in die 
-                    //' Temporärdatei neu anlegen: 
+                    //' Einen StreamWriter fï¿½r das Schreiben in die 
+                    //' Temporï¿½rdatei neu anlegen: 
                     //Dim StreamW As IO.StreamWriter _ 
                     //            = New IO.StreamWriter(strTempFile) 
-                    //StreamW.WriteLine("Text, der in der Temporärdatei gespeichert wird.") 
+                    //StreamW.WriteLine("Text, der in der Temporï¿½rdatei gespeichert wird.") 
                     //StreamW.Close() 
 
                     //' Einen StreamReader erzeugen, um die Datei auszulesen: 
@@ -81,12 +81,12 @@ namespace NetGrep
                     //Dim strRead As String = StreamR.ReadToEnd() 
                     //StreamR.Close() 
 
-                    //' Aus der Temporärdatei ausgelesenen Text ausgeben: 
-                    //Console.WriteLine("Die Temporärdatei{0}{1}{0}wurde genutzt, " & _ 
+                    //' Aus der Temporï¿½rdatei ausgelesenen Text ausgeben: 
+                    //Console.WriteLine("Die Temporï¿½rdatei{0}{1}{0}wurde genutzt, " & _ 
                     //                  "um den folgenden Text zwischenzuspeichern:{0}{2}", _ 
                     //                  vbNewLine, strTempFile, strRead) 
 
-                    //' Temporärdatei löschen  
+                    //' Temporï¿½rdatei lï¿½schen  
                     //Kill(strTempFile)
 
                     if (File.Exists(BakFileName))
@@ -183,6 +183,7 @@ namespace NetGrep
                             }
 
                             // --- Post text ------------------------------------------------
+                            // ??? if (LastIdx < MatchingLineResult.Line.Length - 1)
                             if (LastIdx <= MatchingLineResult.Line.Length - 1)
                             {
                                 EncodedText = MatchingLineResult.Line.Substring(LastIdx, MatchingLineResult.Line.Length - LastIdx);

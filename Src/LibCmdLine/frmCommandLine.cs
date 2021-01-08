@@ -105,12 +105,12 @@ namespace CmdLine2005
                         // Show Form
                         Application.DoEvents();
 
-                        // AppCommands.CommandLineInfo = this;
-                        AppCommands.CmdLineDoCommands();
+                        // Assign options for config
+                        AppCommands.TransferCopyOfAllAvailableOptions(AppCommands);
+                        // MessageBox.Show("DontWriteDateIntoXml: " + AppCommands.InOption("DontWriteDateIntoXml").bValue);
 
                         Global.CmdLineConfig.bNoAutoExit = AppCommands.InOption("NoAutoExit").bValue | AppCommands.InOption("?").bIsOptionEnabled | AppCommands.InOption("h").bIsOptionEnabled;
                         Global.CmdLineConfig.bCloseAfterCommandsDone = AppCommands.InOption("CloseAfterCommandsDone").bValue;
-                        // Global.CmdLineConfig.bDoCheckClasses = AppCommands.InOption("CheckClasses").bValue;
 
                         // ToDo: **:: transfer following to program local function ....
                         Global.CmdLineConfig.bDoOpenLastUsedSearch = AppCommands.InOption("DoOpenLastUsedSearch").bValue;
@@ -118,13 +118,16 @@ namespace CmdLine2005
                         Global.CmdLineConfig.bDoLoadLastOpenSearchesOnStart = AppCommands.InOption("DoLoadLastOpenSearchesOnStart").bValue;
                         Global.CmdLineConfig.bDontLoadLastOpenSearchesOnStart = AppCommands.InOption("DontLoadLastOpenSearchesOnStart").bValue;
 
+                        // AppCommands.CommandLineInfo = this;
+                        AppCommands.CmdLineDoCommands();
+
                         if (!Global.CmdLineConfig.bNoAutoExit)
                             this.Close();
                     }
                 }
                 else
                 {
-                    string OutTxt = "Error: No commanline read and parsed: ";
+                    string OutTxt = "Error: No command line read and parsed: ";
                     System.Windows.Forms.MessageBox.Show(OutTxt);
                 }
 

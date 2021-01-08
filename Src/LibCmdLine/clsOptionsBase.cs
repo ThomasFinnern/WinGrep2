@@ -157,23 +157,22 @@ namespace CmdLine2005
             {
                 bIsOptionSet = true;
             }
-            if (string.Compare(OptValue.ToLower(), "false", true) == 0) // string found
-            {
-                bIsOptionSet = false;
-            }
-
             if (string.Compare(OptValue.ToLower(), "on", true) == 0) // string found
             {
                 bIsOptionSet = true;
             }
-            if (string.Compare(OptValue.ToLower(), "off", true) == 0) // string found
-            {
-                bIsOptionSet = false;
-            }
-
             if (string.Compare(OptValue.ToLower(), "set", true) == 0) // string found
             {
                 bIsOptionSet = true;
+            }
+
+            if (string.Compare(OptValue.ToLower(), "false", true) == 0) // string found
+            {
+                bIsOptionSet = false;
+            }
+            if (string.Compare(OptValue.ToLower(), "off", true) == 0) // string found
+            {
+                bIsOptionSet = false;
             }
             if (string.Compare(OptValue.ToLower(), "clear", true) == 0) // string found
             {

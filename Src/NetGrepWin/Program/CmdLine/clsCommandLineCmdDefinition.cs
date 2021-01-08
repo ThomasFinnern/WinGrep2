@@ -64,7 +64,7 @@ namespace CmdLine2005
             next definitions follow definitions in clsSearchProperties
             ==========================================================*/
 
-            // ToDo: Mehr Erklärungen ausfüllen;
+            // ToDo: Mehr Erklï¿½rungen ausfï¿½llen;
 
             AssignOption(@"SearchString", @"=Search text. May not contain blanks",
                 delegate
@@ -484,20 +484,20 @@ namespace CmdLine2005
 
 
             /*
-                        ShowViewSelection
+                ShowViewSelection
 
-                        public bool bDoShowTitle;
-                        public bool bDoShowLineNumbers;
-                        public bool bDoShowFixedFont;
-                        public bool bDoShowFileNames;
-                        public bool bDoShowFileContents;
-                        public bool bDoShowWholeLine;
-                        Show
-                        public long LineNbrPreviousToMatch;
-                        public long LineNbrFollowingMatch;
-                        Keep
-                        public long LineNbrPreviousToMatch;
-                        public long LineNbrFollowingMatch;
+                public bool bDoShowTitle;
+                public bool bDoShowLineNumbers;
+                public bool bDoShowFixedFont;
+                public bool bDoShowFileNames;
+                public bool bDoShowFileContents;
+                public bool bDoShowWholeLine;
+                Show
+                public long LineNbrPreviousToMatch;
+                public long LineNbrFollowingMatch;
+                Keep
+                public long LineNbrPreviousToMatch;
+                public long LineNbrFollowingMatch;
             */
 
             // AssignOption(@"LookInZipFiles", @"=""true/false"". ");
@@ -790,5 +790,6 @@ namespace CmdLine2005
             */
 
         }
+
     } // class
 } // namespace
