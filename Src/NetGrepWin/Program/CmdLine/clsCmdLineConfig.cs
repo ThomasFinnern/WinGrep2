@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 namespace CmdLine2005
 {
-    class clsCmdLineConfig
+    public class clsCmdLineConfig
     {
         //---------------------------------------------------------------------------------------------
         // Config variables 
