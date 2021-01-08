@@ -176,8 +176,6 @@ namespace MainGlobal
                 DoCmdGrepProperties.ViewSetting = Global.Config.ViewSetting.Clone();
                 DoCmdGrepProperties.ShowViewSelection = Global.Config.ShowViewSelection.Clone();
     
-
-
             }
             catch (Exception Ex)
             {

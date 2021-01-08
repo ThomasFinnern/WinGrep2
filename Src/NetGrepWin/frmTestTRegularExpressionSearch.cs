@@ -172,11 +172,13 @@ namespace NetGrep
 
             //Fix: yyyyy Data path 
             // SearchResultTokenLinesAsHtml.WriteFileFoundLinesWithTokenHtmlDocument(
-            //    Path.GetDirectoryName(Application.ExecutablePath) + "\\" +
+            ////   ???? Path.GetDirectoryName(Application.ExecutablePath) + "\\" +
+            //       Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\" +
             //    "..\\..\\..\\Data\\LinesWithTokenHtmlDocument.htm");
             SearchResultTokenLinesAsHtml.WriteFileFoundLinesWithTokenHtmlDocument(
                 clsAppPaths.UserPathName.PathName + "\\" +
-                // Path.GetDirectoryName(Application.ExecutablePath) + "\\" +
+                //// ??? Path.GetDirectoryName(Application.ExecutablePath) + "\\" +
+                //       Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\" +
                 //"..\\..\\..\\Data\\LinesWithTokenHtmlDocument.htm");
                 "LinesWithTokenHtmlDocument.htm");
         }

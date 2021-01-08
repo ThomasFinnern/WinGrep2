@@ -7,6 +7,8 @@ using System.Windows.Forms;
 using MainGlobal;
 using ErrorCapture;
 
+using AppPaths;
+
 namespace CmdLine2005
 {
     // ToDo: update description
@@ -146,6 +148,8 @@ namespace CmdLine2005
 
         // Keeps input data (token) from user or commandline
         clsCommandLineToken mCmdLineInToken = new clsCommandLineToken();
+
+        string StdHelpFilePath = clsAppPaths.UserPathName.ToString() + "\\CommandsHelp.txt";
 
         // Not used commands
         private List<string> mLeftOverCmdLineTokens = new List<string>();
@@ -1071,15 +1075,16 @@ namespace CmdLine2005
             // following does not work
             // Console.OpenStandardOutput(); 
             //Console.Write(OutTxt);
-            if (PathFileName.Equals (""))
-                CreateHelpMessageFile(OutTxt);
-            else
-                CreateHelpMessageFile(OutTxt, PathFileName);
+            if (PathFileName.Equals(""))
+                PathFileName = StdHelpFilePath;
+
+            CreateHelpMessageFile(OutTxt, PathFileName);
 
             if (Global.oDebugLog.CommandLineInfo != null)
             {
                 Global.oDebugLog.CommandLineInfo.AddInfo("Possible commands and options");
                 Global.oDebugLog.CommandLineInfo.AddInfo(OutTxt);
+                Global.oDebugLog.CommandLineInfo.AddInfo("\r\nSee file: " + PathFileName);
                 Application.DoEvents();
             }
             return OutTxt;
@@ -1345,17 +1350,6 @@ namespace CmdLine2005
             return OutTxt;
         }
 
-
-        /// <summary>
-        /// Write HelpMessage into file CommandsHelp.txt
-        /// </summary>
-        /// <param name="OutTxt">If given the given text will be written into the file. 
-        /// Otherwise standard helpmessage will be created and used</param>
-        /// <returns>Used Text for writing into file</returns>
-        public string CreateHelpMessageFile(string OutTxt)
-        {
-            return CreateHelpMessageFile(OutTxt, @".\" + Application.ProductName + "CommandsHelp.txt");
-        }
 
         /// <summary>
         /// Write HelpMessage into file CommandsHelp.txt

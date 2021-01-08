@@ -63,8 +63,10 @@ namespace DebugLog
         {
             get
             {
+                string RetPath;
                 //string RetPath = Path.GetDirectoryName(Application.ExecutablePath) + "\\Log";
-                string RetPath = Path.GetDirectoryName(Application.ExecutablePath) + @"\" + Application.ProductName + "Log.txt";
+                //string RetPath = Path.GetDirectoryName(Application.ExecutablePath) + @"\" + Application.ProductName + "Log.txt";
+                RetPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\" + Application.ProductName + "Log.txt";
                 return RetPath;
             }
         }

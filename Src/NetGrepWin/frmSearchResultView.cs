@@ -338,7 +338,8 @@ namespace NetGrep
                     else
                     {
                         //SearchResultFileListAsHtml.WriteResultFileHtml(
-                        //    Path.GetDirectoryName(Application.ExecutablePath) + "\\" + 
+                        ////    Path.GetDirectoryName(Application.ExecutablePath) + "\\" + 
+                        // Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\" +
                         //    "..\\..\\..\\Data\\SearchResultFileListAsHtml.htm"
                         //    );
                         WriteResultFileListHtmlFile(HtmlOutFile);
@@ -388,7 +389,8 @@ namespace NetGrep
                 else
                 {
                     //SearchResultTokenLinesAsHtml.WriteFileFoundFilesWithTokenLinesHtmlDocument(
-                    //    Path.GetDirectoryName(Application.ExecutablePath) + "\\" +
+                    //// Path.GetDirectoryName(Application.ExecutablePath) + "\\" +
+                    // Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\" +
                     //    "..\\..\\..\\Data\\SearchResultTokenLinesAsHtml.htm"
                     //    );
                     WriteResultTokenLinesHtmlFile(HtmlOutFile);

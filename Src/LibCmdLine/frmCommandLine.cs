@@ -106,6 +106,7 @@ namespace CmdLine2005
                         Application.DoEvents();
 
                         // Assign options for config
+                        // called double ? 2021.01.08 >> /? double help text
                         AppCommands.TransferCopyOfAllAvailableOptions(AppCommands);
                         // MessageBox.Show("DontWriteDateIntoXml: " + AppCommands.InOption("DontWriteDateIntoXml").bValue);
 

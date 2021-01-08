@@ -226,7 +226,8 @@ namespace LogInputKeys
             get
             {
                 //string RetPath = Path.GetDirectoryName(Application.ExecutablePath) + "\\Log";
-                string RetPath = Path.GetDirectoryName(Application.ExecutablePath) + @"\" + Application.ProductName + "KeyLog.txt";
+                //string RetPath = Path.GetDirectoryName(Application.ExecutablePath) + @"\" + Application.ProductName + ".KeyLog.txt";
+                string RetPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\" + Application.ProductName + ".KeyLog.txt";
                 return RetPath;
             }
         }
