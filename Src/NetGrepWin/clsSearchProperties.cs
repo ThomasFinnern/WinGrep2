@@ -50,6 +50,7 @@ namespace NetGrep
         // --- File type options -----------------------------------
 
         public bool bUseFileRegularExpression;
+        public bool bRegExFileMatchCase;
         public bool bSearchInsideZipFiles;
         // public bool bSkipBinaryFiles;
         public bool bSkipFileTypes;
@@ -59,6 +60,7 @@ namespace NetGrep
         // --- Folder options -------------------------------------#
 
         public bool bUseFolderRegularExpression;
+        public bool bRegExFolderMatchCase;
         public bool bDoRecourseFolders;
 
 

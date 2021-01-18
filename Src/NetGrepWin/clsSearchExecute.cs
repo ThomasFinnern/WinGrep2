@@ -59,6 +59,20 @@ namespace NetGrep
                 {
                     SetInfo(FileName);
 
+                    
+                    //--------------------------------------------------------------------------------------
+                    // File check
+                    //--------------------------------------------------------------------------------------
+
+                    if(GrepProperties.bUseFileRegularExpression)
+                    {
+                        
+                        if (false)
+                        {
+                            continue;
+                        }
+                    }
+
                     UpdateFolderCount(SearchFilesInFoldersIEnumerator.FolderNbr);
                     UpdateFileCount(SearchFilesInFoldersIEnumerator.FileNbr);
 

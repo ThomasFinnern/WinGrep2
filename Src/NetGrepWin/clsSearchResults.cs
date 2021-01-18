@@ -63,6 +63,11 @@ namespace NetGrep
                 SearchFilesInFoldersIEnumerator.FileTypes = GrepProperties.FileSpecificationAsList();
                 SearchFilesInFoldersIEnumerator.SearchFolders = GrepProperties.SearchFolders;
                 SearchFilesInFoldersIEnumerator.bDoRecourseFolders = GrepProperties.bDoRecourseFolders;
+
+                SearchFilesInFoldersIEnumerator.bUseFileRegularExpression = GrepProperties.bUseFileRegularExpression;
+                SearchFilesInFoldersIEnumerator.bRegExFileMatchCase = GrepProperties.bRegExFileMatchCase;
+                SearchFilesInFoldersIEnumerator.bRegExFolderMatchCase = GrepProperties.bRegExFolderMatchCase;
+
             }
             else
             {

@@ -28,6 +28,11 @@ namespace NetGrep
         public bool bDoRecourseFolders = true;
         public bool bUseFileRegularExpression = false;
         public bool bUseFolderRegularExpression = false;
+        public bool bMatchFileCase = false;
+
+        public bool bRegExFileMatchCase;
+
+        public bool bRegExFolderMatchCase;
 
         public int FolderNbr;
         public int FileNbr;
@@ -154,7 +159,12 @@ namespace NetGrep
                 else
                 {
                     RegexOptions RegexOptions = new RegexOptions();
+                    if (bRegExFileMatchCase)
+                        RegexOptions &= ~RegexOptions.IgnoreCase; // löschen
+                    else
+                        RegexOptions |= RegexOptions.IgnoreCase;  // setzen
                     Regex RegExSearch = new Regex(FileSearchPattern, RegexOptions);
+
 
                     // For regex use all files
                     foreach (FileInfo ActFileInfo in Dir.GetFiles())

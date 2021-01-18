@@ -92,11 +92,14 @@ namespace NetGrep
             // .Checked = SearchProperties.bSkipBinaryFiles;
             chkSkipFileTypes.Checked = SearchProperties.bSkipFileTypes;
             cmbFileSpecSkip.Text = SearchProperties.SkipFileTypesString;
+            chkRegExFileMatchCase.Checked = SearchProperties.bRegExFileMatchCase;
 
 
             // --- Folder options -------------------------------------
 
-            checkRegExPathFileNames.Checked = SearchProperties.bUseFolderRegularExpression;
+            checkRegExFullPath.Checked = SearchProperties.bUseFolderRegularExpression;
+            chkRegExFolderMatchCase.Checked = SearchProperties.bRegExFolderMatchCase;
+
             chkDoRecourseFolder.Checked = SearchProperties.bDoRecourseFolders;
 
             cmbFolder.SelectedIndex = 0;
@@ -259,10 +262,13 @@ namespace NetGrep
             // SearchProperties.bSkipBinaryFiles = .Checked;
             SearchProperties.bSkipFileTypes = chkSkipFileTypes.Checked;
             SearchProperties.SkipFileTypesString = cmbFileSpecSkip.Text;
+            SearchProperties.bRegExFileMatchCase = chkRegExFileMatchCase.Checked;
 
             // --- Folder options -------------------------------------#
 
-            SearchProperties.bUseFolderRegularExpression = checkRegExPathFileNames.Checked;
+            SearchProperties.bUseFolderRegularExpression = checkRegExFullPath.Checked;
+            SearchProperties.bRegExFolderMatchCase = chkRegExFolderMatchCase.Checked;
+
             SearchProperties.bDoRecourseFolders = chkDoRecourseFolder.Checked;
 
             SearchProperties.ViewSetting.Show.LineNbrFollowingMatch = Convert.ToInt32(NbrShowFollowingLines.Text);
@@ -308,49 +314,50 @@ namespace NetGrep
                 cmdCancel_Click(sender, e);
             }
         }
-
+        
         private void radioButtonMoreInSearchString_Click(object sender, EventArgs e)
         {
             if (flowLayoutPanelSearchString.Visible)
             {
-                radioButtonMoreInSearchString.Checked = true;
-                // flowLayoutPanelSearchString.Visible = false;
+                // Keep enabled when any control is set in extension
+                flowLayoutPanelSearchString.Visible = IsExtraParameterSet(); // false expected in most cases
             }
             else
             {
-                radioButtonMoreInSearchString.Checked = false;
-                //flowLayoutPanelSearchString.Visible = true;
+                flowLayoutPanelSearchString.Visible = true;
             }
 
-            flowLayoutPanelSearchString.Visible = IsExtraParameterSet();
-        }
-
-        private void radioButtonMoreInFolders_Click(object sender, EventArgs e)
-        {
-            if (flowLayoutPanelFolder.Visible)
-            {
-                flowLayoutPanelFolder.Visible = false;
-            }
-            else
-            {
-                flowLayoutPanelFolder.Visible = true;
-            }
-
-            radioButtonMoreInFolders.Checked = IsFolderParameterSet();
+            radioButtonMoreInSearchString.Checked = flowLayoutPanelSearchString.Visible;
         }
 
         private void radioButtonMoreInFileSpecification_Click(object sender, EventArgs e)
         {
             if (flowLayoutPanelFileSpecification.Visible)
             {
-                radioButtonMoreInFileSpecification.Checked = true;
-                flowLayoutPanelFileSpecification.Visible = false;
+                // Keep enabled when any control is set in extension
+                flowLayoutPanelFileSpecification.Visible = IsFileParameterSet();
             }
             else
             {
-                radioButtonMoreInFileSpecification.Checked = false;
                 flowLayoutPanelFileSpecification.Visible = true;
             }
+
+            radioButtonMoreInFileSpecification.Checked = flowLayoutPanelFileSpecification.Visible;
+        }
+
+        private void radioButtonMoreInFolders_Click(object sender, EventArgs e)
+        {
+            if (flowLayoutPanelFolder.Visible)
+            {
+                // Keep enabled when any control is set in extension
+                flowLayoutPanelFolder.Visible = IsFolderParameterSet();
+            }
+            else
+            {
+                flowLayoutPanelFolder.Visible = true;
+            }
+
+            radioButtonMoreInFolders.Checked = flowLayoutPanelFolder.Visible;
         }
 
         private void chkDelimitedList_CheckedChanged(object sender, EventArgs e)
