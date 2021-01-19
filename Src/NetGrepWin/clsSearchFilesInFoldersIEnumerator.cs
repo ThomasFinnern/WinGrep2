@@ -22,17 +22,22 @@ namespace NetGrep
         protected List<string> NotPermittedFiles = new List<string>();
         // protected List<string> PermittedFiles = new List<string>();
         public List<string> UseFileList = new List<string>();
-        public List<string> SearchFolders = new List<string>();
-        public List<string> FileTypes = new List<string>();
-        public bool bCancelSearch = false;
-        public bool bDoRecourseFolders = true;
-        public bool bUseFileRegularExpression = false;
-        public bool bUseFolderRegularExpression = false;
-        public bool bMatchFileCase = false;
 
+        // File 
+        public List<string> FileTypes = new List<string>();
+        public List<string> SearchFolders = new List<string>();
+        public bool bUseFileRegularExpression = false;
         public bool bRegExFileMatchCase;
 
-        public bool bRegExFolderMatchCase;
+
+        // Folder
+        public bool bCancelSearch = false;
+        public bool bDoRecourseFolders = true;
+        public bool bUseFolderRegularExpression = false;
+        public bool bMatchFileCase = false;
+        public bool bRegExFolderMatchCase = false;
+        public bool bRegExPathLastPart = false;
+        public string RegExPathLastPartText = "";
 
         public int FolderNbr;
         public int FileNbr;
@@ -65,6 +70,11 @@ namespace NetGrep
                         // All start folders 
                         foreach (string Folder in SearchFolders)
                         {
+                            // ToDo Call subroutine
+                                // ... there: call function for all files
+                                // ... there call itself for all folders 
+
+
                             if (!Directory.Exists(Folder))
                             {
                                 string OutTxt = "Wrong folder : '" + Folder + "'"; // Use debug or log file !!

@@ -91,9 +91,11 @@
             this.label1 = new System.Windows.Forms.Label();
             this.flowLayoutPanelFolder = new System.Windows.Forms.FlowLayoutPanel();
             this.checkRegExPathLastPart = new System.Windows.Forms.CheckBox();
+            this.chkRegExFolderMatchCase = new System.Windows.Forms.CheckBox();
             this.panel10 = new System.Windows.Forms.Panel();
             this.flowLayoutPanelFileSpecification = new System.Windows.Forms.FlowLayoutPanel();
             this.chkRegExFileNames = new System.Windows.Forms.CheckBox();
+            this.chkRegExFileMatchCase = new System.Windows.Forms.CheckBox();
             this.chkSearchInZipFiles = new System.Windows.Forms.CheckBox();
             this.chkSkipBinaryFiles = new System.Windows.Forms.CheckBox();
             this.chkSkipTextFiles = new System.Windows.Forms.CheckBox();
@@ -111,8 +113,7 @@
             this.NbrShowFollowingLines = new System.Windows.Forms.TextBox();
             this.NbrShowPreviousLines = new System.Windows.Forms.TextBox();
             this.button3 = new System.Windows.Forms.Button();
-            this.chkRegExFileMatchCase = new System.Windows.Forms.CheckBox();
-            this.chkRegExFolderMatchCase = new System.Windows.Forms.CheckBox();
+            this.txtbRegExPathLastPart = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel9.SuspendLayout();
             this.panel5.SuspendLayout();
@@ -182,7 +183,7 @@
             // chkDoRecourseFolder
             // 
             this.chkDoRecourseFolder.AutoSize = true;
-            this.chkDoRecourseFolder.Location = new System.Drawing.Point(241, 3);
+            this.chkDoRecourseFolder.Location = new System.Drawing.Point(502, 3);
             this.chkDoRecourseFolder.Name = "chkDoRecourseFolder";
             this.chkDoRecourseFolder.Size = new System.Drawing.Size(106, 17);
             this.chkDoRecourseFolder.TabIndex = 0;
@@ -193,7 +194,7 @@
             // 
             this.chkCountFilesFirst.AutoSize = true;
             this.chkCountFilesFirst.Enabled = false;
-            this.chkCountFilesFirst.Location = new System.Drawing.Point(497, 3);
+            this.chkCountFilesFirst.Location = new System.Drawing.Point(614, 3);
             this.chkCountFilesFirst.Name = "chkCountFilesFirst";
             this.chkCountFilesFirst.Size = new System.Drawing.Size(94, 17);
             this.chkCountFilesFirst.TabIndex = 0;
@@ -810,9 +811,10 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.flowLayoutPanelFolder.Controls.Add(this.checkRegExFullPath);
-            this.flowLayoutPanelFolder.Controls.Add(this.checkRegExPathLastPart);
-            this.flowLayoutPanelFolder.Controls.Add(this.chkDoRecourseFolder);
             this.flowLayoutPanelFolder.Controls.Add(this.chkRegExFolderMatchCase);
+            this.flowLayoutPanelFolder.Controls.Add(this.checkRegExPathLastPart);
+            this.flowLayoutPanelFolder.Controls.Add(this.txtbRegExPathLastPart);
+            this.flowLayoutPanelFolder.Controls.Add(this.chkDoRecourseFolder);
             this.flowLayoutPanelFolder.Controls.Add(this.chkCountFilesFirst);
             this.flowLayoutPanelFolder.Controls.Add(this.panel10);
             this.flowLayoutPanelFolder.Location = new System.Drawing.Point(3, 291);
@@ -825,12 +827,22 @@
             // 
             this.checkRegExPathLastPart.AutoSize = true;
             this.checkRegExPathLastPart.Enabled = false;
-            this.checkRegExPathLastPart.Location = new System.Drawing.Point(110, 3);
+            this.checkRegExPathLastPart.Location = new System.Drawing.Point(254, 3);
             this.checkRegExPathLastPart.Name = "checkRegExPathLastPart";
             this.checkRegExPathLastPart.Size = new System.Drawing.Size(125, 17);
             this.checkRegExPathLastPart.TabIndex = 41;
             this.checkRegExPathLastPart.Text = "RegEx- path last part";
             this.checkRegExPathLastPart.UseVisualStyleBackColor = true;
+            // 
+            // chkRegExFolderMatchCase
+            // 
+            this.chkRegExFolderMatchCase.Enabled = false;
+            this.chkRegExFolderMatchCase.Location = new System.Drawing.Point(110, 3);
+            this.chkRegExFolderMatchCase.Name = "chkRegExFolderMatchCase";
+            this.chkRegExFolderMatchCase.Size = new System.Drawing.Size(138, 17);
+            this.chkRegExFolderMatchCase.TabIndex = 42;
+            this.chkRegExFolderMatchCase.Text = "RegEx Match Case";
+            this.chkRegExFolderMatchCase.UseVisualStyleBackColor = true;
             // 
             // panel10
             // 
@@ -838,7 +850,7 @@
             this.panel10.Controls.Add(this.chkSkipFolderTypes);
             this.panel10.Controls.Add(this.cmbFolderSpecSkip);
             this.panel10.Controls.Add(this.cmdFolderSkipListView);
-            this.panel10.Location = new System.Drawing.Point(3, 26);
+            this.panel10.Location = new System.Drawing.Point(3, 29);
             this.panel10.Name = "panel10";
             this.panel10.Size = new System.Drawing.Size(445, 24);
             this.panel10.TabIndex = 39;
@@ -869,6 +881,15 @@
             this.chkRegExFileNames.TabIndex = 29;
             this.chkRegExFileNames.Text = "RegEx-file names";
             this.chkRegExFileNames.UseVisualStyleBackColor = true;
+            // 
+            // chkRegExFileMatchCase
+            // 
+            this.chkRegExFileMatchCase.Location = new System.Drawing.Point(117, 3);
+            this.chkRegExFileMatchCase.Name = "chkRegExFileMatchCase";
+            this.chkRegExFileMatchCase.Size = new System.Drawing.Size(138, 17);
+            this.chkRegExFileMatchCase.TabIndex = 39;
+            this.chkRegExFileMatchCase.Text = "RegEx Match Case";
+            this.chkRegExFileMatchCase.UseVisualStyleBackColor = true;
             // 
             // chkSearchInZipFiles
             // 
@@ -1051,23 +1072,14 @@
             this.button3.Text = "[+]";
             this.button3.UseVisualStyleBackColor = true;
             // 
-            // chkRegExFileMatchCase
+            // txtbRegExPathLastPart
             // 
-            this.chkRegExFileMatchCase.Location = new System.Drawing.Point(117, 3);
-            this.chkRegExFileMatchCase.Name = "chkRegExFileMatchCase";
-            this.chkRegExFileMatchCase.Size = new System.Drawing.Size(138, 17);
-            this.chkRegExFileMatchCase.TabIndex = 39;
-            this.chkRegExFileMatchCase.Text = "RegEx Match Case";
-            this.chkRegExFileMatchCase.UseVisualStyleBackColor = true;
-            // 
-            // chkRegExFolderMatchCase
-            // 
-            this.chkRegExFolderMatchCase.Location = new System.Drawing.Point(353, 3);
-            this.chkRegExFolderMatchCase.Name = "chkRegExFolderMatchCase";
-            this.chkRegExFolderMatchCase.Size = new System.Drawing.Size(138, 17);
-            this.chkRegExFolderMatchCase.TabIndex = 42;
-            this.chkRegExFolderMatchCase.Text = "RegEx Match Case";
-            this.chkRegExFolderMatchCase.UseVisualStyleBackColor = true;
+            this.txtbRegExPathLastPart.Enabled = false;
+            this.txtbRegExPathLastPart.Location = new System.Drawing.Point(385, 3);
+            this.txtbRegExPathLastPart.Name = "txtbRegExPathLastPart";
+            this.txtbRegExPathLastPart.Size = new System.Drawing.Size(111, 20);
+            this.txtbRegExPathLastPart.TabIndex = 43;
+            this.txtbRegExPathLastPart.Visible = false;
             // 
             // frmSearchProperties
             // 
@@ -1206,5 +1218,6 @@
         private System.Windows.Forms.CheckBox checkRegExPathLastPart;
         private System.Windows.Forms.CheckBox chkRegExFileMatchCase;
         private System.Windows.Forms.CheckBox chkRegExFolderMatchCase;
+        private System.Windows.Forms.TextBox txtbRegExPathLastPart;
     }
 }

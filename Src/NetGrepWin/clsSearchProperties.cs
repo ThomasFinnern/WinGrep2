@@ -62,7 +62,8 @@ namespace NetGrep
         public bool bUseFolderRegularExpression;
         public bool bRegExFolderMatchCase;
         public bool bDoRecourseFolders;
-
+        public bool bRegExPathLastPart;
+        public string RegExPathLastPartText;
 
         // --- Replace options ------------------------------------
         protected bool mbReplaceInSelectedFiles;

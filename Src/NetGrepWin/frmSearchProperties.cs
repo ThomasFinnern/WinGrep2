@@ -99,6 +99,8 @@ namespace NetGrep
 
             checkRegExFullPath.Checked = SearchProperties.bUseFolderRegularExpression;
             chkRegExFolderMatchCase.Checked = SearchProperties.bRegExFolderMatchCase;
+            checkRegExPathLastPart.Checked = SearchProperties.bRegExPathLastPart;
+            txtbRegExPathLastPart.Text = SearchProperties.RegExPathLastPartText;
 
             chkDoRecourseFolder.Checked = SearchProperties.bDoRecourseFolders;
 
@@ -268,6 +270,8 @@ namespace NetGrep
 
             SearchProperties.bUseFolderRegularExpression = checkRegExFullPath.Checked;
             SearchProperties.bRegExFolderMatchCase = chkRegExFolderMatchCase.Checked;
+            SearchProperties.bRegExPathLastPart = checkRegExPathLastPart.Checked;
+            SearchProperties.RegExPathLastPartText = txtbRegExPathLastPart.Text;
 
             SearchProperties.bDoRecourseFolders = chkDoRecourseFolder.Checked;
 

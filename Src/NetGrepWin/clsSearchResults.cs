@@ -60,14 +60,21 @@ namespace NetGrep
                 // Collect all possible files
                 //--------------------------------------------------------------------------------------
 
+                // File 
                 SearchFilesInFoldersIEnumerator.FileTypes = GrepProperties.FileSpecificationAsList();
                 SearchFilesInFoldersIEnumerator.SearchFolders = GrepProperties.SearchFolders;
-                SearchFilesInFoldersIEnumerator.bDoRecourseFolders = GrepProperties.bDoRecourseFolders;
-
                 SearchFilesInFoldersIEnumerator.bUseFileRegularExpression = GrepProperties.bUseFileRegularExpression;
                 SearchFilesInFoldersIEnumerator.bRegExFileMatchCase = GrepProperties.bRegExFileMatchCase;
-                SearchFilesInFoldersIEnumerator.bRegExFolderMatchCase = GrepProperties.bRegExFolderMatchCase;
 
+                // Folder
+                SearchFilesInFoldersIEnumerator.bDoRecourseFolders = GrepProperties.bDoRecourseFolders;
+                SearchFilesInFoldersIEnumerator.bRegExFolderMatchCase       = GrepProperties.bRegExFolderMatchCase;
+                SearchFilesInFoldersIEnumerator.bUseFolderRegularExpression = GrepProperties.bUseFolderRegularExpression;
+                SearchFilesInFoldersIEnumerator.bRegExFolderMatchCase       = GrepProperties.bRegExFolderMatchCase;
+                SearchFilesInFoldersIEnumerator.bDoRecourseFolders          = GrepProperties.bDoRecourseFolders;
+                SearchFilesInFoldersIEnumerator.bRegExPathLastPart          = GrepProperties.bRegExPathLastPart;
+                SearchFilesInFoldersIEnumerator.RegExPathLastPartText       = GrepProperties.RegExPathLastPartText;
+             
             }
             else
             {
