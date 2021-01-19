@@ -149,7 +149,8 @@ namespace CmdLine2005
         // Keeps input data (token) from user or commandline
         clsCommandLineToken mCmdLineInToken = new clsCommandLineToken();
 
-        string StdHelpFilePath = clsAppPaths.UserPathName.ToString() + "\\CommandsHelp.txt";
+        //string StdHelpFilePath = clsAppPaths.UserPathName.ToString() + "\\CommandsHelp.txt";
+        string StdHelpFilePath = Path.Combine(clsAppPaths.UserPathName.ToString(), "CommandsHelp.txt");
 
         // Not used commands
         private List<string> mLeftOverCmdLineTokens = new List<string>();
