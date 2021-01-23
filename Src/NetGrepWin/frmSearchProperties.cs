@@ -100,7 +100,7 @@ namespace NetGrep
             checkRegExFullPath.Checked = SearchProperties.bUseFolderRegularExpression;
             chkRegExFolderMatchCase.Checked = SearchProperties.bRegExFolderMatchCase;
             checkRegExPathLastPart.Checked = SearchProperties.bRegExPathLastPart;
-            txtbRegExPathLastPart.Text = SearchProperties.RegExPathLastPartText;
+            txtbRegExFolder.Text = SearchProperties.RegExFolderText;
 
             chkDoRecourseFolder.Checked = SearchProperties.bDoRecourseFolders;
 
@@ -148,6 +148,9 @@ namespace NetGrep
 
             if (chkRegExFileNames.Checked)
                 bIsFileParameterSet = true;
+            
+            if (chkRegExFileMatchCase.Checked)
+                bIsFileParameterSet = true;
 
             return bIsFileParameterSet;
         }
@@ -157,6 +160,18 @@ namespace NetGrep
             bool bIsFolderParameterSet = false;
 
             if (!chkDoRecourseFolder.Checked)
+                bIsFolderParameterSet = true;
+
+            if(txtbRegExFolder.Text.Length > 0)
+                bIsFolderParameterSet = true;
+
+            if (!checkRegExFullPath.Checked)
+                bIsFolderParameterSet = true;
+
+            if (!chkRegExFolderMatchCase.Checked)
+                bIsFolderParameterSet = true;
+
+            if (!checkRegExPathLastPart.Checked)
                 bIsFolderParameterSet = true;
 
             return bIsFolderParameterSet;
@@ -271,7 +286,7 @@ namespace NetGrep
             SearchProperties.bUseFolderRegularExpression = checkRegExFullPath.Checked;
             SearchProperties.bRegExFolderMatchCase = chkRegExFolderMatchCase.Checked;
             SearchProperties.bRegExPathLastPart = checkRegExPathLastPart.Checked;
-            SearchProperties.RegExPathLastPartText = txtbRegExPathLastPart.Text;
+            SearchProperties.RegExFolderText = txtbRegExFolder.Text;
 
             SearchProperties.bDoRecourseFolders = chkDoRecourseFolder.Checked;
 

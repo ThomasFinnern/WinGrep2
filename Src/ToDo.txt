@@ -1,5 +1,5 @@
 - ToDo: 
-- ToDo: 
+- ToDo: HTML view: Spaces at start -> $nbsp;
 - ToDo: 
 - ToDo: 
 - ToDo: Options for editor file: "c:\Program Files\Notepad++\notepad++.exe" $F filename $L linenumber 1..n  $G Match string $C column number $E Filename without quotes added

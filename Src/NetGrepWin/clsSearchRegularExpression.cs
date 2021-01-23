@@ -72,14 +72,12 @@ namespace NetGrep
                 try
                 {
                     RegExSearch = new Regex(SearchString, RegexOptions);
-                    // RegExSearch.IsMatch(SearchString);
                 }
                 catch (Exception Ex)
                 {
-                    string ErrTxt = "";
-
-                    ErrTxt = "Error in RegEx string: " + Ex.Message;
-                    MessageBox.Show(ErrTxt);
+                    string OutTxt = "Regular expession creation (string) failed for: '"
+                        + SearchString + "' \r\n" + Ex.Message;
+                    MessageBox.Show(OutTxt);
 
                     // clsErrorCapture ErrCapture = new clsErrorCapture(Ex);
                     // ErrCapture.ShowExeption();

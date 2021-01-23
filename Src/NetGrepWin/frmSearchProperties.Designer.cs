@@ -90,8 +90,9 @@
             this.radioButtonMoreInSearchString = new System.Windows.Forms.RadioButton();
             this.label1 = new System.Windows.Forms.Label();
             this.flowLayoutPanelFolder = new System.Windows.Forms.FlowLayoutPanel();
-            this.checkRegExPathLastPart = new System.Windows.Forms.CheckBox();
             this.chkRegExFolderMatchCase = new System.Windows.Forms.CheckBox();
+            this.checkRegExPathLastPart = new System.Windows.Forms.CheckBox();
+            this.txtbRegExFolder = new System.Windows.Forms.TextBox();
             this.panel10 = new System.Windows.Forms.Panel();
             this.flowLayoutPanelFileSpecification = new System.Windows.Forms.FlowLayoutPanel();
             this.chkRegExFileNames = new System.Windows.Forms.CheckBox();
@@ -113,7 +114,8 @@
             this.NbrShowFollowingLines = new System.Windows.Forms.TextBox();
             this.NbrShowPreviousLines = new System.Windows.Forms.TextBox();
             this.button3 = new System.Windows.Forms.Button();
-            this.txtbRegExPathLastPart = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel9.SuspendLayout();
             this.panel5.SuspendLayout();
@@ -143,7 +145,7 @@
             this.lblSearchPropertiesTitle.Location = new System.Drawing.Point(9, 9);
             this.lblSearchPropertiesTitle.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.lblSearchPropertiesTitle.Name = "lblSearchPropertiesTitle";
-            this.lblSearchPropertiesTitle.Size = new System.Drawing.Size(804, 25);
+            this.lblSearchPropertiesTitle.Size = new System.Drawing.Size(968, 25);
             this.lblSearchPropertiesTitle.TabIndex = 5;
             this.lblSearchPropertiesTitle.Text = "Search properties";
             this.lblSearchPropertiesTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -151,7 +153,7 @@
             // cmdStartSearch
             // 
             this.cmdStartSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.cmdStartSearch.Location = new System.Drawing.Point(664, 433);
+            this.cmdStartSearch.Location = new System.Drawing.Point(828, 433);
             this.cmdStartSearch.Name = "cmdStartSearch";
             this.cmdStartSearch.Size = new System.Drawing.Size(73, 21);
             this.cmdStartSearch.TabIndex = 2;
@@ -162,7 +164,7 @@
             // cmdExit
             // 
             this.cmdExit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.cmdExit.Location = new System.Drawing.Point(741, 433);
+            this.cmdExit.Location = new System.Drawing.Point(905, 433);
             this.cmdExit.Name = "cmdExit";
             this.cmdExit.Size = new System.Drawing.Size(73, 21);
             this.cmdExit.TabIndex = 4;
@@ -183,7 +185,7 @@
             // chkDoRecourseFolder
             // 
             this.chkDoRecourseFolder.AutoSize = true;
-            this.chkDoRecourseFolder.Location = new System.Drawing.Point(502, 3);
+            this.chkDoRecourseFolder.Location = new System.Drawing.Point(3, 3);
             this.chkDoRecourseFolder.Name = "chkDoRecourseFolder";
             this.chkDoRecourseFolder.Size = new System.Drawing.Size(106, 17);
             this.chkDoRecourseFolder.TabIndex = 0;
@@ -194,7 +196,7 @@
             // 
             this.chkCountFilesFirst.AutoSize = true;
             this.chkCountFilesFirst.Enabled = false;
-            this.chkCountFilesFirst.Location = new System.Drawing.Point(614, 3);
+            this.chkCountFilesFirst.Location = new System.Drawing.Point(659, 3);
             this.chkCountFilesFirst.Name = "chkCountFilesFirst";
             this.chkCountFilesFirst.Size = new System.Drawing.Size(94, 17);
             this.chkCountFilesFirst.TabIndex = 0;
@@ -205,7 +207,7 @@
             // cmdCancel
             // 
             this.cmdCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.cmdCancel.Location = new System.Drawing.Point(585, 433);
+            this.cmdCancel.Location = new System.Drawing.Point(749, 433);
             this.cmdCancel.Name = "cmdCancel";
             this.cmdCancel.Size = new System.Drawing.Size(73, 21);
             this.cmdCancel.TabIndex = 3;
@@ -216,8 +218,7 @@
             // checkRegExFullPath
             // 
             this.checkRegExFullPath.AutoSize = true;
-            this.checkRegExFullPath.Enabled = false;
-            this.checkRegExFullPath.Location = new System.Drawing.Point(3, 3);
+            this.checkRegExFullPath.Location = new System.Drawing.Point(277, 3);
             this.checkRegExFullPath.Name = "checkRegExFullPath";
             this.checkRegExFullPath.Size = new System.Drawing.Size(101, 17);
             this.checkRegExFullPath.TabIndex = 26;
@@ -289,7 +290,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 32F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(801, 378);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(965, 378);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // panel9
@@ -300,13 +301,13 @@
             this.panel9.Controls.Add(this.cmbFolder);
             this.panel9.Location = new System.Drawing.Point(3, 259);
             this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(795, 26);
+            this.panel9.Size = new System.Drawing.Size(959, 26);
             this.panel9.TabIndex = 39;
             // 
             // cmdFolderListView
             // 
             this.cmdFolderListView.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.cmdFolderListView.Location = new System.Drawing.Point(772, 0);
+            this.cmdFolderListView.Location = new System.Drawing.Point(936, 0);
             this.cmdFolderListView.Name = "cmdFolderListView";
             this.cmdFolderListView.Size = new System.Drawing.Size(22, 21);
             this.cmdFolderListView.TabIndex = 28;
@@ -322,7 +323,7 @@
             this.cmbFolder.FormattingEnabled = true;
             this.cmbFolder.Location = new System.Drawing.Point(3, 0);
             this.cmbFolder.Name = "cmbFolder";
-            this.cmbFolder.Size = new System.Drawing.Size(766, 21);
+            this.cmbFolder.Size = new System.Drawing.Size(930, 21);
             this.cmbFolder.TabIndex = 2;
             this.cmbFolder.DragDrop += new System.Windows.Forms.DragEventHandler(this.cmbFolder_DragDrop);
             this.cmbFolder.DragEnter += new System.Windows.Forms.DragEventHandler(this.cmbFolder_DragEnter);
@@ -357,7 +358,7 @@
             this.panel7.Controls.Add(this.cmdFileListView);
             this.panel7.Location = new System.Drawing.Point(3, 174);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(795, 26);
+            this.panel7.Size = new System.Drawing.Size(959, 26);
             this.panel7.TabIndex = 38;
             // 
             // cmbFileSpec
@@ -367,13 +368,13 @@
             this.cmbFileSpec.FormattingEnabled = true;
             this.cmbFileSpec.Location = new System.Drawing.Point(3, 0);
             this.cmbFileSpec.Name = "cmbFileSpec";
-            this.cmbFileSpec.Size = new System.Drawing.Size(767, 21);
+            this.cmbFileSpec.Size = new System.Drawing.Size(931, 21);
             this.cmbFileSpec.TabIndex = 1;
             // 
             // cmdFileListView
             // 
             this.cmdFileListView.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.cmdFileListView.Location = new System.Drawing.Point(773, 0);
+            this.cmdFileListView.Location = new System.Drawing.Point(937, 0);
             this.cmdFileListView.Name = "cmdFileListView";
             this.cmdFileListView.Size = new System.Drawing.Size(22, 21);
             this.cmdFileListView.TabIndex = 28;
@@ -390,13 +391,13 @@
             this.panel2.Controls.Add(this.cmbSearchString);
             this.panel2.Location = new System.Drawing.Point(3, 27);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(795, 24);
+            this.panel2.Size = new System.Drawing.Size(959, 24);
             this.panel2.TabIndex = 0;
             // 
             // cmdSearchStringView
             // 
             this.cmdSearchStringView.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.cmdSearchStringView.Location = new System.Drawing.Point(772, 0);
+            this.cmdSearchStringView.Location = new System.Drawing.Point(936, 0);
             this.cmdSearchStringView.Name = "cmdSearchStringView";
             this.cmdSearchStringView.Size = new System.Drawing.Size(22, 21);
             this.cmdSearchStringView.TabIndex = 1;
@@ -410,7 +411,7 @@
             this.cmbSearchString.FormattingEnabled = true;
             this.cmbSearchString.Location = new System.Drawing.Point(3, 0);
             this.cmbSearchString.Name = "cmbSearchString";
-            this.cmbSearchString.Size = new System.Drawing.Size(766, 21);
+            this.cmbSearchString.Size = new System.Drawing.Size(930, 21);
             this.cmbSearchString.TabIndex = 0;
             // 
             // flowLayoutPanelSearchString
@@ -434,7 +435,7 @@
             this.flowLayoutPanelSearchString.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutPanelSearchString.Location = new System.Drawing.Point(3, 59);
             this.flowLayoutPanelSearchString.Name = "flowLayoutPanelSearchString";
-            this.flowLayoutPanelSearchString.Size = new System.Drawing.Size(795, 86);
+            this.flowLayoutPanelSearchString.Size = new System.Drawing.Size(959, 86);
             this.flowLayoutPanelSearchString.TabIndex = 25;
             // 
             // chkWholeWordsOnly
@@ -810,39 +811,46 @@
             this.flowLayoutPanelFolder.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.flowLayoutPanelFolder.Controls.Add(this.chkDoRecourseFolder);
+            this.flowLayoutPanelFolder.Controls.Add(this.label9);
+            this.flowLayoutPanelFolder.Controls.Add(this.txtbRegExFolder);
             this.flowLayoutPanelFolder.Controls.Add(this.checkRegExFullPath);
             this.flowLayoutPanelFolder.Controls.Add(this.chkRegExFolderMatchCase);
             this.flowLayoutPanelFolder.Controls.Add(this.checkRegExPathLastPart);
-            this.flowLayoutPanelFolder.Controls.Add(this.txtbRegExPathLastPart);
-            this.flowLayoutPanelFolder.Controls.Add(this.chkDoRecourseFolder);
             this.flowLayoutPanelFolder.Controls.Add(this.chkCountFilesFirst);
             this.flowLayoutPanelFolder.Controls.Add(this.panel10);
+            this.flowLayoutPanelFolder.Controls.Add(this.label8);
             this.flowLayoutPanelFolder.Location = new System.Drawing.Point(3, 291);
             this.flowLayoutPanelFolder.Name = "flowLayoutPanelFolder";
-            this.flowLayoutPanelFolder.Size = new System.Drawing.Size(795, 24);
+            this.flowLayoutPanelFolder.Size = new System.Drawing.Size(959, 24);
             this.flowLayoutPanelFolder.TabIndex = 40;
             this.flowLayoutPanelFolder.Visible = false;
+            // 
+            // chkRegExFolderMatchCase
+            // 
+            this.chkRegExFolderMatchCase.Location = new System.Drawing.Point(384, 3);
+            this.chkRegExFolderMatchCase.Name = "chkRegExFolderMatchCase";
+            this.chkRegExFolderMatchCase.Size = new System.Drawing.Size(138, 17);
+            this.chkRegExFolderMatchCase.TabIndex = 42;
+            this.chkRegExFolderMatchCase.Text = "RegEx Match Case";
+            this.chkRegExFolderMatchCase.UseVisualStyleBackColor = true;
             // 
             // checkRegExPathLastPart
             // 
             this.checkRegExPathLastPart.AutoSize = true;
-            this.checkRegExPathLastPart.Enabled = false;
-            this.checkRegExPathLastPart.Location = new System.Drawing.Point(254, 3);
+            this.checkRegExPathLastPart.Location = new System.Drawing.Point(528, 3);
             this.checkRegExPathLastPart.Name = "checkRegExPathLastPart";
             this.checkRegExPathLastPart.Size = new System.Drawing.Size(125, 17);
             this.checkRegExPathLastPart.TabIndex = 41;
             this.checkRegExPathLastPart.Text = "RegEx- path last part";
             this.checkRegExPathLastPart.UseVisualStyleBackColor = true;
             // 
-            // chkRegExFolderMatchCase
+            // txtbRegExFolder
             // 
-            this.chkRegExFolderMatchCase.Enabled = false;
-            this.chkRegExFolderMatchCase.Location = new System.Drawing.Point(110, 3);
-            this.chkRegExFolderMatchCase.Name = "chkRegExFolderMatchCase";
-            this.chkRegExFolderMatchCase.Size = new System.Drawing.Size(138, 17);
-            this.chkRegExFolderMatchCase.TabIndex = 42;
-            this.chkRegExFolderMatchCase.Text = "RegEx Match Case";
-            this.chkRegExFolderMatchCase.UseVisualStyleBackColor = true;
+            this.txtbRegExFolder.Location = new System.Drawing.Point(160, 3);
+            this.txtbRegExFolder.Name = "txtbRegExFolder";
+            this.txtbRegExFolder.Size = new System.Drawing.Size(111, 20);
+            this.txtbRegExFolder.TabIndex = 43;
             // 
             // panel10
             // 
@@ -868,7 +876,7 @@
             this.flowLayoutPanelFileSpecification.Controls.Add(this.panel8);
             this.flowLayoutPanelFileSpecification.Location = new System.Drawing.Point(3, 206);
             this.flowLayoutPanelFileSpecification.Name = "flowLayoutPanelFileSpecification";
-            this.flowLayoutPanelFileSpecification.Size = new System.Drawing.Size(795, 24);
+            this.flowLayoutPanelFileSpecification.Size = new System.Drawing.Size(959, 24);
             this.flowLayoutPanelFileSpecification.TabIndex = 41;
             this.flowLayoutPanelFileSpecification.Visible = false;
             // 
@@ -984,13 +992,13 @@
             this.panel12.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel12.Location = new System.Drawing.Point(3, 321);
             this.panel12.Name = "panel12";
-            this.panel12.Size = new System.Drawing.Size(795, 54);
+            this.panel12.Size = new System.Drawing.Size(959, 54);
             this.panel12.TabIndex = 42;
             // 
             // label4
             // 
             this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label4.Location = new System.Drawing.Point(480, 29);
+            this.label4.Location = new System.Drawing.Point(644, 29);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(128, 20);
             this.label4.TabIndex = 4;
@@ -1000,7 +1008,7 @@
             // label5
             // 
             this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label5.Location = new System.Drawing.Point(308, 28);
+            this.label5.Location = new System.Drawing.Point(472, 28);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(117, 20);
             this.label5.TabIndex = 7;
@@ -1010,7 +1018,7 @@
             // label6
             // 
             this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label6.Location = new System.Drawing.Point(480, 3);
+            this.label6.Location = new System.Drawing.Point(644, 3);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(128, 20);
             this.label6.TabIndex = 8;
@@ -1020,7 +1028,7 @@
             // NbrPrepareFollowingLines
             // 
             this.NbrPrepareFollowingLines.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.NbrPrepareFollowingLines.Location = new System.Drawing.Point(614, 29);
+            this.NbrPrepareFollowingLines.Location = new System.Drawing.Point(778, 29);
             this.NbrPrepareFollowingLines.Name = "NbrPrepareFollowingLines";
             this.NbrPrepareFollowingLines.Size = new System.Drawing.Size(43, 20);
             this.NbrPrepareFollowingLines.TabIndex = 9;
@@ -1029,7 +1037,7 @@
             // label7
             // 
             this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label7.Location = new System.Drawing.Point(308, 3);
+            this.label7.Location = new System.Drawing.Point(472, 3);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(117, 20);
             this.label7.TabIndex = 6;
@@ -1039,7 +1047,7 @@
             // NbrPreparePreviousLines
             // 
             this.NbrPreparePreviousLines.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.NbrPreparePreviousLines.Location = new System.Drawing.Point(614, 4);
+            this.NbrPreparePreviousLines.Location = new System.Drawing.Point(778, 4);
             this.NbrPreparePreviousLines.Name = "NbrPreparePreviousLines";
             this.NbrPreparePreviousLines.Size = new System.Drawing.Size(43, 20);
             this.NbrPreparePreviousLines.TabIndex = 2;
@@ -1048,7 +1056,7 @@
             // NbrShowFollowingLines
             // 
             this.NbrShowFollowingLines.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.NbrShowFollowingLines.Location = new System.Drawing.Point(431, 29);
+            this.NbrShowFollowingLines.Location = new System.Drawing.Point(595, 29);
             this.NbrShowFollowingLines.Name = "NbrShowFollowingLines";
             this.NbrShowFollowingLines.Size = new System.Drawing.Size(43, 20);
             this.NbrShowFollowingLines.TabIndex = 5;
@@ -1057,7 +1065,7 @@
             // NbrShowPreviousLines
             // 
             this.NbrShowPreviousLines.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.NbrShowPreviousLines.Location = new System.Drawing.Point(431, 3);
+            this.NbrShowPreviousLines.Location = new System.Drawing.Point(595, 3);
             this.NbrShowPreviousLines.Name = "NbrShowPreviousLines";
             this.NbrShowPreviousLines.Size = new System.Drawing.Size(43, 20);
             this.NbrShowPreviousLines.TabIndex = 3;
@@ -1072,20 +1080,29 @@
             this.button3.Text = "[+]";
             this.button3.UseVisualStyleBackColor = true;
             // 
-            // txtbRegExPathLastPart
+            // label8
             // 
-            this.txtbRegExPathLastPart.Enabled = false;
-            this.txtbRegExPathLastPart.Location = new System.Drawing.Point(385, 3);
-            this.txtbRegExPathLastPart.Name = "txtbRegExPathLastPart";
-            this.txtbRegExPathLastPart.Size = new System.Drawing.Size(111, 20);
-            this.txtbRegExPathLastPart.TabIndex = 43;
-            this.txtbRegExPathLastPart.Visible = false;
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(454, 26);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(35, 13);
+            this.label8.TabIndex = 44;
+            this.label8.Text = "label8";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(115, 0);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(39, 13);
+            this.label9.TabIndex = 45;
+            this.label9.Text = "RegEx";
             // 
             // frmSearchProperties
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(825, 466);
+            this.ClientSize = new System.Drawing.Size(989, 466);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.cmdCancel);
@@ -1218,6 +1235,8 @@
         private System.Windows.Forms.CheckBox checkRegExPathLastPart;
         private System.Windows.Forms.CheckBox chkRegExFileMatchCase;
         private System.Windows.Forms.CheckBox chkRegExFolderMatchCase;
-        private System.Windows.Forms.TextBox txtbRegExPathLastPart;
+        private System.Windows.Forms.TextBox txtbRegExFolder;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label8;
     }
 }

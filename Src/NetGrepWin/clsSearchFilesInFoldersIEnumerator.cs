@@ -37,7 +37,7 @@ namespace NetGrep
         public bool bMatchFileCase = false;
         public bool bRegExFolderMatchCase = false;
         public bool bRegExPathLastPart = false;
-        public string RegExPathLastPartText = "";
+        public string RegExFolderText = "";
 
         public int FolderNbr;
         public int FileNbr;
@@ -128,23 +128,36 @@ namespace NetGrep
 
         private IEnumerable<string> enumFolder(DirectoryInfo Dir, string FileSearchPattern)
         {
-            
+            bool bIsFolderValid = false;
 
             //try
             {
+                bIsFolderValid = true;
+
+                // Check RegEx of folder
+                if (bUseFolderRegularExpression || bRegExPathLastPart)
+                {
+                    bIsFolderValid = CheckFolderNameRegEx(Dir);
+                }
 
                 //--- files in this directory ------------------------------------
 
-                foreach (string FileName in enumFilesInFolders(Dir, FileSearchPattern))
+                if (bIsFolderValid)
                 {
-                    yield return FileName;
+                    
+                    //foreach (string FileName in enumFilesInFolders(Dir, FileSearchPattern))
+                    foreach (string FileName in IenumFiles(Dir, FileSearchPattern))
+                        {
+                            yield return FileName;
 
-                    if (bCancelSearch)
-                        break;
+                        if (bCancelSearch)
+                            break;
+                    }
                 }
 
-
                 //--- sub directories -----------------------------------------------
+
+//                DoEvents();
 
                 if (!bCancelSearch && bDoRecourseFolders)
                 {
@@ -174,31 +187,158 @@ namespace NetGrep
             //}
         }
 
-
-        // 
-        public IEnumerable<string> IenumFiles(string Folder, string FileSearchPattern)
+        private bool CheckFolderNameRegEx(DirectoryInfo Dir)
         {
+            bool bIsFolderValid = false;
+            string PathName;
+            string FolderName;
+            Regex RegExSearch = null;
+            
+            try
+            {
+                //--- path and folder name -----------------------------------------
+
+                PathName = Dir.FullName;
+                //string PathPart = Path.GetDirectoryName(FileName);
+                FolderName = Path.GetFileName(PathName);
+
+                //--- Prepare regex --------------------------------------
+
+                RegexOptions RegexOptions = new RegexOptions();
+                if (bRegExFolderMatchCase)
+                    RegexOptions &= ~RegexOptions.IgnoreCase; // löschen
+                else
+                    RegexOptions |= RegexOptions.IgnoreCase;  // setzen
+                try
+                {
+                    RegExSearch = new Regex(RegExFolderText, RegexOptions);
+                }
+                catch (Exception Ex)
+                {
+                    // Regex failed
+                    string OutTxt = "Regular expession creation (folder) failed for: '"
+                        + RegExFolderText + "' \r\n" + Ex.Message;
+                    MessageBox.Show(OutTxt);
+
+                    bCancelSearch = true;
+                }
+
+                if (RegExSearch != null)
+                {
+                    //  on last path part -> folder name
+                    if (bRegExPathLastPart)
+                    {
+                        Match MatchFile = RegExSearch.Match(FolderName);
+                        if (MatchFile.Success)
+                        {
+                            bIsFolderValid = true;
+                        }
+                    }
+                    else
+                    {
+                        //--- Complete path ----------------------------------------------------
+
+                        Match MatchFile = RegExSearch.Match(PathName);
+                        if (MatchFile.Success)
+                        {
+                            bIsFolderValid = true;
+                        }
+                    }
+                }
+            }
+            catch (Exception Ex)
+            {
+                clsErrorCapture ErrCapture = new clsErrorCapture(Ex);
+                ErrCapture.ShowExeption();
+            }
+
+            return bIsFolderValid;
+        }
+
+
+        // Files in folders
+        public IEnumerable<string> IenumFiles(DirectoryInfo Dir, string FileSearchPattern)
+        {
+            Regex RegExSearch = null;
+
             //try
             {
 
-                // Will be called recursively
-                DirectoryInfo Dir = new DirectoryInfo(Folder);
-                foreach (string FileName in enumFilesInFolders(Dir, FileSearchPattern))
+                // Standard search (no regex)
+                if (!bUseFileRegularExpression)
                 {
-                    //string PathPart = Path.GetDirectoryName(FileName);
-                    //string NamePart = Path.GetFileName(FileName);
+                    // All files in folder
+                    foreach (FileInfo ActFileInfo in Dir.GetFiles(FileSearchPattern))
+                    {
+                        FileNbr++;
 
-                    //// debug dummy
-                    //if (NamePart.Contains("cs"))
-                    //{
-                    //    NamePart = NamePart;
-                    //}
-
-                    yield return FileName;
-
-                    if (bCancelSearch)
-                        break;
+                        yield return ActFileInfo.FullName;
+                        if (bCancelSearch)
+                            break;
+                    }
                 }
+                else
+                {
+                    //--- RegEx search -------------------------------------------
+
+                    // Prepare regex
+                    RegexOptions RegexOptions = new RegexOptions();
+                    if (bRegExFileMatchCase)
+                        RegexOptions &= ~RegexOptions.IgnoreCase; // löschen
+                    else
+                        RegexOptions |= RegexOptions.IgnoreCase;  // setzen
+                    try
+                    {
+                        RegExSearch = new Regex(FileSearchPattern, RegexOptions);
+                    }
+                    catch (Exception Ex)
+                    {
+                        // Regex failed
+                        string OutTxt = "Regular expession creation (files) failed for: '"
+                            + RegExFolderText + "' \r\n" + Ex.Message;
+                        MessageBox.Show(OutTxt);
+
+                        bCancelSearch = true;
+                    }
+
+                    if (RegExSearch != null)
+                    {
+
+                        // All files
+                        foreach (FileInfo ActFileInfo in Dir.GetFiles())
+                        {
+                            Match MatchFile = RegExSearch.Match(ActFileInfo.Name);
+                            if (MatchFile.Success)
+                            {
+                                FileNbr++;
+
+                                yield return ActFileInfo.FullName;
+
+                                if (bCancelSearch)
+                                    break;
+                            }
+                        }
+                    }
+                }
+
+                //// Will be called recursively
+                //DirectoryInfo Dir = new DirectoryInfo(Folder);
+                //foreach (string FileName in enumFilesInFolders(Dir, FileSearchPattern))
+                //{
+                //    //string PathPart = Path.GetDirectoryName(FileName);
+                //    //string NamePart = Path.GetFileName(FileName);
+
+                //    //// debug dummy
+                //    //if (NamePart.Contains("cs"))
+                //    //{
+                //    //    NamePart = NamePart;
+                //    //}
+
+                //    yield return FileName;
+
+                //    if (bCancelSearch)
+                //        break;
+                //}
             }
             //catch (Exception Ex)
             //{
@@ -225,90 +365,106 @@ namespace NetGrep
 
 
 
-        private IEnumerable<string> enumFilesInFolders(DirectoryInfo Dir, string FileSearchPattern)
-        {
-            // ToDo: replace each FileSpecification with FileSearchPattern or FilePattern
-            //try
-            {
+//        private IEnumerable<string> enumFilesInFolders(DirectoryInfo Dir, string FileSearchPattern)
+//        {
+//            Regex RegExSearch = null;
 
-                /*
-                FileInfo[] DirFiles;
-                // Standard : Files with given patterns
-                if (!bUseFileRegularExpression)
-                    DirFiles = );
-                else
-                    // For regex use all files
-                    DirFiles = Dir.GetFiles();
+//            // ToDo: replace each FileSpecification with FileSearchPattern or FilePattern
+//            //try
+//            {
+
+//                /*
+//                FileInfo[] DirFiles;
+//                // Standard : Files with given patterns
+//                if (!bUseFileRegularExpression)
+//                    DirFiles = );
+//                else
+//                    // For regex use all files
+//                    DirFiles = Dir.GetFiles();
                 
-                foreach (FileInfo ActFileInfo in DirFiles)
-                ...
-                */
-                if (!bUseFileRegularExpression)
-                {
-                    foreach (FileInfo ActFileInfo in Dir.GetFiles(FileSearchPattern))
-                    {
-                        FileNbr++;
+//                foreach (FileInfo ActFileInfo in DirFiles)
+//                ...
+//                */
 
-                        yield return ActFileInfo.FullName;
-                        if (bCancelSearch)
-                            break;
-                    }
-                }
-                else
-                {
-                    RegexOptions RegexOptions = new RegexOptions();
-                    if (bRegExFileMatchCase)
-                        RegexOptions &= ~RegexOptions.IgnoreCase; // löschen
-                    else
-                        RegexOptions |= RegexOptions.IgnoreCase;  // setzen
-                    Regex RegExSearch = new Regex(FileSearchPattern, RegexOptions);
+//                if (!bUseFileRegularExpression)
+//                {
+//                    foreach (FileInfo ActFileInfo in Dir.GetFiles(FileSearchPattern))
+//                    {
+//                        FileNbr++;
 
+//                        yield return ActFileInfo.FullName;
+//                        if (bCancelSearch)
+//                            break;
+//                    }
+//                }
+//                else
+//                {
+//                    RegexOptions RegexOptions = new RegexOptions();
+//                    if (bRegExFileMatchCase)
+//                        RegexOptions &= ~RegexOptions.IgnoreCase; // löschen
+//                    else
+//                        RegexOptions |= RegexOptions.IgnoreCase;  // setzen
+//                    try
+//                    {
+//                        RegExSearch = new Regex(FileSearchPattern, RegexOptions);
+//                    }
+//                    catch (Exception Ex)
+//                    {
+//                        // Regex failed
+//                        string OutTxt = "Regular expession creation ´(folder) failed for: '"
+//                            + RegExFolderText + "' \r\n" + Ex.Message;
+//                        bCancelSearch = true;
+//                    }
 
-                    // For regex use all files
-                    foreach (FileInfo ActFileInfo in Dir.GetFiles())
-                    {
-                        Match MatchFile = RegExSearch.Match(ActFileInfo.Name);
-                        if (MatchFile.Success)
-                        {
-                            FileNbr++;                        
-
-                            yield return ActFileInfo.FullName;
-                            if (bCancelSearch)
-                                break;
-                        }
-                    }
-                }
+//                    if (RegExSearch != null)
+//                    {
 
 
-                if (!bCancelSearch && bDoRecourseFolders)
-                {
-                    // Process each directory
-                    foreach (DirectoryInfo SubDir in Dir.GetDirectories())
-                    {
-                        FolderNbr++;
+//                        // For regex use all files
+//                        foreach (FileInfo ActFileInfo in Dir.GetFiles())
+//                        {
+//                            Match MatchFile = RegExSearch.Match(ActFileInfo.Name);
+//                            if (MatchFile.Success)
+//                            {
+//                                FileNbr++;
 
-//                        YYYXXXX regex foldernames
-                        ;
+//                                yield return ActFileInfo.FullName;
+//                                if (bCancelSearch)
+//                                    break;
+//                            }
+//                        }
+//                    }
+//                }
 
-                        foreach (string FileName in enumFilesInFolders(SubDir, FileSearchPattern))
-                        {
-                            yield return FileName;
+////                if (!bCancelSearch && bDoRecourseFolders)
+////                {
+////                    // Process each directory
+////                    foreach (DirectoryInfo SubDir in Dir.GetDirectories())
+////                    {
+////                        FolderNbr++;
 
-                            if (bCancelSearch)
-                                break;
-                        }
+//////                        YYYXXXX regex foldernames
+////                        ;
 
-                        if (bCancelSearch)
-                            break;
-                    }
-                }
-            }
-            //catch (Exception Ex)
-            //{
-            //    clsErrorCapture ErrCapture = new clsErrorCapture(Ex);
-            //    ErrCapture.ShowExeption();
-            //}
-        }
+////                        foreach (string FileName in enumFilesInFolders(SubDir, FileSearchPattern))
+////                        {
+////                            yield return FileName;
+
+////                            if (bCancelSearch)
+////                                break;
+////                        }
+
+////                        if (bCancelSearch)
+////                            break;
+////                    }
+////                }
+//            }
+//            //catch (Exception Ex)
+//            //{
+//            //    clsErrorCapture ErrCapture = new clsErrorCapture(Ex);
+//            //    ErrCapture.ShowExeption();
+//            //}
+//        }
 
 /*
 //                            yield return Directory.GetFiles(Folder, FileSpecification, SearchOption.AllDirectories);

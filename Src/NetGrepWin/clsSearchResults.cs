@@ -73,8 +73,8 @@ namespace NetGrep
                 SearchFilesInFoldersIEnumerator.bRegExFolderMatchCase       = GrepProperties.bRegExFolderMatchCase;
                 SearchFilesInFoldersIEnumerator.bDoRecourseFolders          = GrepProperties.bDoRecourseFolders;
                 SearchFilesInFoldersIEnumerator.bRegExPathLastPart          = GrepProperties.bRegExPathLastPart;
-                SearchFilesInFoldersIEnumerator.RegExPathLastPartText       = GrepProperties.RegExPathLastPartText;
-             
+                SearchFilesInFoldersIEnumerator.RegExFolderText             = GrepProperties.RegExFolderText;
+                
             }
             else
             {
