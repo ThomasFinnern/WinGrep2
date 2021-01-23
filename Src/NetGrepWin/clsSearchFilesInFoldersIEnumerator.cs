@@ -43,8 +43,9 @@ namespace NetGrep
         public int FileNbr;
 
         // protected List<IEnumerable<string>> ieSpecFiles = new List<IEnumerable<string>>();
-        
-        public IEnumerable<string> IenumFiles()
+
+        // IenumFiles
+        public IEnumerable<string> CollectFiles()
         {
             bCancelSearch = false;
             FolderNbr = 1;
@@ -82,40 +83,27 @@ namespace NetGrep
                             }
                             else
                             {
+
                                 // Will be called recursively
                                 DirectoryInfo Dir = new DirectoryInfo(Folder);
-                                foreach (string FileName in enumFilesFoundInFolders(Dir, FileSearchPattern))
+                                foreach (string FileName in enumFolder(Dir, FileSearchPattern))
                                 {
-                                    string PathPart = Path.GetDirectoryName(FileName);
-                                    string NamePart = Path.GetFileName(FileName);
+                                    //string PathPart = Path.GetDirectoryName(FileName);
+                                    //string NamePart = Path.GetFileName(FileName);
 
-/*
-                RegexOptions RegexOptions = new RegexOptions();
-                if (GrepProperties.bMatchCase)
-                    RegexOptions &= ~RegexOptions.IgnoreCase; // löschen
-                else
-                    RegexOptions |= RegexOptions.IgnoreCase;  // setzen
-
-                // Test regular expession for errors
-                try
-                {
-                    RegExSearch = new Regex(SearchString, RegexOptions);
-*/
-
-
-
-                                    // debug dummy
-                                    if (NamePart.Contains("cs"))
-                                    {
-
-
-                                    }
+                                    //// debug dummy
+                                    //if (NamePart.Contains("cs"))
+                                    //{
+                                    //    NamePart = NamePart;                    
+                                    //}
 
                                     yield return FileName;
 
                                     if (bCancelSearch)
                                         break;
                                 }
+
+
                             }
 
                             if (bCancelSearch)
@@ -137,7 +125,107 @@ namespace NetGrep
             //}
         }
 
-        private IEnumerable<string> enumFilesFoundInFolders(DirectoryInfo Dir, string FileSearchPattern)
+
+        private IEnumerable<string> enumFolder(DirectoryInfo Dir, string FileSearchPattern)
+        {
+            
+
+            //try
+            {
+
+                //--- files in this directory ------------------------------------
+
+                foreach (string FileName in enumFilesInFolders(Dir, FileSearchPattern))
+                {
+                    yield return FileName;
+
+                    if (bCancelSearch)
+                        break;
+                }
+
+
+                //--- sub directories -----------------------------------------------
+
+                if (!bCancelSearch && bDoRecourseFolders)
+                {
+                    // Process each directory
+                    foreach (DirectoryInfo SubDir in Dir.GetDirectories())
+                    {
+                        FolderNbr++;
+
+                        foreach (string FileName in enumFolder(SubDir, FileSearchPattern))
+                        {
+                            yield return FileName;
+
+                            if (bCancelSearch)
+                                break;
+                        }
+
+                        if (bCancelSearch)
+                            break;
+                    }
+                } // sub directories
+
+            }
+            //catch (Exception Ex)
+            //{
+            //    clsErrorCapture ErrCapture = new clsErrorCapture(Ex);
+            //    ErrCapture.ShowExeption();
+            //}
+        }
+
+
+        // 
+        public IEnumerable<string> IenumFiles(string Folder, string FileSearchPattern)
+        {
+            //try
+            {
+
+                // Will be called recursively
+                DirectoryInfo Dir = new DirectoryInfo(Folder);
+                foreach (string FileName in enumFilesInFolders(Dir, FileSearchPattern))
+                {
+                    //string PathPart = Path.GetDirectoryName(FileName);
+                    //string NamePart = Path.GetFileName(FileName);
+
+                    //// debug dummy
+                    //if (NamePart.Contains("cs"))
+                    //{
+                    //    NamePart = NamePart;
+                    //}
+
+                    yield return FileName;
+
+                    if (bCancelSearch)
+                        break;
+                }
+            }
+            //catch (Exception Ex)
+            //{
+            //    clsErrorCapture ErrCapture = new clsErrorCapture(Ex);
+            //    ErrCapture.ShowExeption();
+            //}
+
+        }
+
+
+        /*
+                RegexOptions RegexOptions = new RegexOptions();
+                if (GrepProperties.bMatchCase)
+                    RegexOptions &= ~RegexOptions.IgnoreCase; // löschen
+                else
+                    RegexOptions |= RegexOptions.IgnoreCase;  // setzen
+
+                // Test regular expession for errors
+                try
+                {
+                    RegExSearch = new Regex(SearchString, RegexOptions);
+        */
+
+
+
+
+        private IEnumerable<string> enumFilesInFolders(DirectoryInfo Dir, string FileSearchPattern)
         {
             // ToDo: replace each FileSpecification with FileSearchPattern or FilePattern
             //try
@@ -202,7 +290,7 @@ namespace NetGrep
 //                        YYYXXXX regex foldernames
                         ;
 
-                        foreach (string FileName in enumFilesFoundInFolders(SubDir, FileSearchPattern))
+                        foreach (string FileName in enumFilesInFolders(SubDir, FileSearchPattern))
                         {
                             yield return FileName;
 

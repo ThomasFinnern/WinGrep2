@@ -55,7 +55,8 @@ namespace NetGrep
                 Stopwatch ExecTime = new Stopwatch();
                 ExecTime.Start();
 
-                foreach (string FileName in SearchFilesInFoldersIEnumerator.IenumFiles())
+                // 
+                foreach (string FileName in SearchFilesInFoldersIEnumerator.CollectFiles())
                 {
                     SetInfo(FileName);
 
