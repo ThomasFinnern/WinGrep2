@@ -1,5 +1,13 @@
+- ToDo: !!! no admin any more !!!
+- ToDo: 
+- ToDo: 
 - ToDo: 
 - ToDo: HTML view: Spaces at start -> $nbsp;
+- ToDo: Console.KeyAvailable 
+- ToDo: Doc *.md files
+- ToDo: Update after folder finihed -> add to last ...
+- ToDo: question on empty ... update, yes no -> keep already shown data
+- ToDo: 
 - ToDo: 
 - ToDo: 
 - ToDo: Options for editor file: "c:\Program Files\Notepad++\notepad++.exe" $F filename $L linenumber 1..n  $G Match string $C column number $E Filename without quotes added
