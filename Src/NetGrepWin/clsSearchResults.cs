@@ -45,6 +45,12 @@ namespace NetGrep
         public event EventHandler<clsEventArgsWithOneMessage> OnUpdateFileCount;
         public event EventHandler<clsEventArgsWithOneMessage> OnUpdateTime;
 
+        public bool bCancelSearch
+        {
+            get { return SearchFilesInFoldersIEnumerator.bCancelSearch; }
+            set { SearchFilesInFoldersIEnumerator.bCancelSearch = value; }
+        }
+
         //public event EventHandler<clsEventArgsWithOneMessage> OnSetMaxFileNumber;
         //public event EventHandler<clsEventArgsWithOneMessage> OnSetActFileNumber;
 

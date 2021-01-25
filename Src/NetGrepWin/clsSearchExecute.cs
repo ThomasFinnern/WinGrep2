@@ -20,6 +20,7 @@ namespace NetGrep
         //{ 
         //}
 
+
         public override void ExecuteSearch(clsSearchProperties GrepProperties)
         {
             try
@@ -58,6 +59,9 @@ namespace NetGrep
                 // 
                 foreach (string FileName in SearchFilesInFoldersIEnumerator.CollectFiles())
                 {
+                    if (bCancelSearch)
+                        break;
+
                     SetInfo(FileName);
 
                     UpdateFolderCount(SearchFilesInFoldersIEnumerator.FolderNbr);

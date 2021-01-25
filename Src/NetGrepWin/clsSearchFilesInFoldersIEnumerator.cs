@@ -29,7 +29,6 @@ namespace NetGrep
         public bool bUseFileRegularExpression = false;
         public bool bRegExFileMatchCase;
 
-
         // Folder
         public bool bCancelSearch = false;
         public bool bDoRecourseFolders = true;

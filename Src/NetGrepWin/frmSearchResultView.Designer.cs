@@ -474,6 +474,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Search results";
             this.Shown += new System.EventHandler(this.frmDoSearch_Shown);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmSearchResultView_KeyDown);
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);

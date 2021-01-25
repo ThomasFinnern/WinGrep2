@@ -1287,6 +1287,14 @@ namespace NetGrep
 
             MessageBox.Show ("Text in clipboard: \r\n" + Id);
         }
+
+        private void frmSearchResultView_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                LocalSearchResults.bCancelSearch = true;
+            }
+        }
     }
 }
 
