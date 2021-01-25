@@ -88,6 +88,9 @@ namespace NetGrep
                                 DirectoryInfo Dir = new DirectoryInfo(Folder);
                                 foreach (string FileName in enumFolder(Dir, FileSearchPattern))
                                 {
+                                    if (bCancelSearch)
+                                        break;
+
                                     //string PathPart = Path.GetDirectoryName(FileName);
                                     //string NamePart = Path.GetFileName(FileName);
 
@@ -98,11 +101,7 @@ namespace NetGrep
                                     //}
 
                                     yield return FileName;
-
-                                    if (bCancelSearch)
-                                        break;
                                 }
-
 
                             }
 
@@ -147,8 +146,8 @@ namespace NetGrep
                     
                     //foreach (string FileName in enumFilesInFolders(Dir, FileSearchPattern))
                     foreach (string FileName in IenumFiles(Dir, FileSearchPattern))
-                        {
-                            yield return FileName;
+                    {
+                        yield return FileName;
 
                         if (bCancelSearch)
                             break;
@@ -157,28 +156,28 @@ namespace NetGrep
 
                 //--- sub directories -----------------------------------------------
 
-//                DoEvents();
+                //                DoEvents();
 
-                if (!bCancelSearch && bDoRecourseFolders)
+                if (!bCancelSearch)
                 {
-                    // Process each directory
-                    foreach (DirectoryInfo SubDir in Dir.GetDirectories())
+                    if (!bCancelSearch && bDoRecourseFolders)
                     {
-                        FolderNbr++;
-
-                        foreach (string FileName in enumFolder(SubDir, FileSearchPattern))
+                        // Process each directory
+                        foreach (DirectoryInfo SubDir in Dir.GetDirectories())
                         {
-                            yield return FileName;
+                            FolderNbr++;
 
-                            if (bCancelSearch)
-                                break;
+                            foreach (string FileName in enumFolder(SubDir, FileSearchPattern))
+                            {
+                                if (bCancelSearch)
+                                    break;
+
+                                yield return FileName;
+                            }
+
                         }
-
-                        if (bCancelSearch)
-                            break;
-                    }
-                } // sub directories
-
+                    } // sub directories
+                }
             }
             //catch (Exception Ex)
             //{
