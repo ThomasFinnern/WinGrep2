@@ -59,6 +59,8 @@ namespace NetGrep
                 // 
                 foreach (string FileName in SearchFilesInFoldersIEnumerator.CollectFiles())
                 {
+                    Application.DoEvents();
+
                     if (bCancelSearch)
                         break;
 

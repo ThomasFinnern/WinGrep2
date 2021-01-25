@@ -46,7 +46,6 @@ namespace NetGrep
         // IenumFiles
         public IEnumerable<string> CollectFiles()
         {
-            bCancelSearch = false;
             FolderNbr = 1;
             FileNbr = 0;
 
@@ -82,11 +81,13 @@ namespace NetGrep
                             }
                             else
                             {
-
                                 // Will be called recursively
                                 DirectoryInfo Dir = new DirectoryInfo(Folder);
                                 foreach (string FileName in enumFolder(Dir, FileSearchPattern))
                                 {
+                                    // Check "ESC" pressed
+                                    Application.DoEvents();
+
                                     if (bCancelSearch)
                                         break;
 
@@ -164,6 +165,8 @@ namespace NetGrep
                         // Process each directory
                         foreach (DirectoryInfo SubDir in Dir.GetDirectories())
                         {
+                            Application.DoEvents();
+
                             FolderNbr++;
 
                             foreach (string FileName in enumFolder(SubDir, FileSearchPattern))
@@ -507,6 +510,7 @@ private void enumFilesFoundInFolders(DirectoryInfo Dir,string FileSpecification)
 
         }
 */
+/**
         public IEnumerable<string []> IenumFiles2()
         {
             //try
@@ -538,6 +542,7 @@ private void enumFilesFoundInFolders(DirectoryInfo Dir,string FileSpecification)
             //    ErrCapture.ShowExeption();
             //}
         }
+/**/
 
     }
 }

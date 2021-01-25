@@ -1292,7 +1292,16 @@ namespace NetGrep
         {
             if (e.KeyCode == Keys.Escape)
             {
-                LocalSearchResults.bCancelSearch = true;
+                DoCancelSearch();
+            }
+
+            if (e.Alt)
+            {
+                if (e.KeyCode == Keys.R)
+                {
+                    ExecuteSearchFromForm();
+                    ShowResults();
+                }
             }
         }
     }

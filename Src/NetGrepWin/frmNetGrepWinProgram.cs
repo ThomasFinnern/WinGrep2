@@ -1405,7 +1405,6 @@ namespace NetGrep
 
                 frmSearchResultView ActSearch = SearchActiveMdiFormOfTypeDoSearch();
                 ActSearch.DoCancelSearch();
-
             }
             catch (Exception Ex)
             {
