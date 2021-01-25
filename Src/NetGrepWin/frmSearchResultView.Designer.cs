@@ -108,7 +108,7 @@
             // toolStripLabelTitle
             // 
             this.toolStripLabelTitle.Name = "toolStripLabelTitle";
-            this.toolStripLabelTitle.Size = new System.Drawing.Size(36, 17);
+            this.toolStripLabelTitle.Size = new System.Drawing.Size(35, 17);
             this.toolStripLabelTitle.Text = "Title: ";
             // 
             // toolStripStatusLblTitleText
@@ -170,7 +170,7 @@
             // toolStripStatusLabel1
             // 
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(37, 17);
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(36, 17);
             this.toolStripStatusLabel1.Text = "Time:";
             // 
             // toolStripStatusLbTimeText
@@ -377,6 +377,7 @@
             this.checkBoxDoShowFixedFont.TabIndex = 0;
             this.checkBoxDoShowFixedFont.Text = "*Fixed font";
             this.checkBoxDoShowFixedFont.UseVisualStyleBackColor = true;
+            this.checkBoxDoShowFixedFont.Visible = false;
             this.checkBoxDoShowFixedFont.CheckedChanged += new System.EventHandler(this.checkBoxDoShowFixedFont_CheckedChanged);
             // 
             // panel6

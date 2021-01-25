@@ -2,13 +2,16 @@
 - ToDo: 
 - ToDo: 
 - ToDo: 
+- ToDo: 
+- ToDo: 
+- ToDo: Replace tabs with 3 blanks (ToDo: select in configuration)            
 - ToDo: HTML view: Spaces at start -> $nbsp;
 - ToDo: Console.KeyAvailable 
 - ToDo: Doc *.md files
 - ToDo: Update after folder finihed -> add to last ...
 - ToDo: question on empty ... update, yes no -> keep already shown data
-- ToDo: 
-- ToDo: 
+- ToDo: ? search in tetxbox..SelectAll()
+- ToDo: config -> Option have some items with no code behind
 - ToDo: 
 - ToDo: Options for editor file: "c:\Program Files\Notepad++\notepad++.exe" $F filename $L linenumber 1..n  $G Match string $C column number $E Filename without quotes added
 - ToDo: sort by filename (including/excluding path)

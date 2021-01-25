@@ -95,6 +95,16 @@ Each of the four ways is different, so use each one where you fell appropriate. 
             // Replace blanks with none breakable blanks
             encodedHtml = new Regex(" (?= )|(?<= ) ").Replace(encodedHtml, "&nbsp;");
 
+            // Replace tabs with 3 blanks (ToDo: select in configuration)            
+
+            int TabCount = 3;
+            string tabReplace = "";
+            for (int Idx=0; Idx < TabCount; Idx++)
+            {
+                tabReplace += "&nbsp;";
+            }
+            encodedHtml = encodedHtml.Replace('\u0009'.ToString(), tabReplace);
+
             return encodedHtml;
         }
 
