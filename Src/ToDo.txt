@@ -1,8 +1,8 @@
 - ToDo: !!! no admin any more !!!
 - ToDo: 
 - ToDo: 
-- ToDo: 
-- ToDo: 
+- ToDo: Limit search depth to n folder
+- ToDo: if path is too long start with ... intead or start folder ? max length with ... in middle and size onboth sides
 - ToDo: 
 - ToDo: Replace tabs with 3 blanks (ToDo: select in configuration)            
 - ToDo: HTML view: Spaces at start -> $nbsp;
