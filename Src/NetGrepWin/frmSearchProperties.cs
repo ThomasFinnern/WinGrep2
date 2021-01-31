@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using MainGlobal;
 using ErrorCapture;
 using LibStringFunctions;
+using System.IO;
 
 namespace NetGrep
 {
@@ -162,16 +163,22 @@ namespace NetGrep
             if (!chkDoRecourseFolder.Checked)
                 bIsFolderParameterSet = true;
 
-            if(txtbRegExFolder.Text.Length > 0)
+            if (checkRegExFullPath.Checked)
                 bIsFolderParameterSet = true;
 
-            if (!checkRegExFullPath.Checked)
+            if (chkRegExFolderMatchCase.Checked)
                 bIsFolderParameterSet = true;
 
-            if (!chkRegExFolderMatchCase.Checked)
+            if (checkRegExPathLastPart.Checked)
                 bIsFolderParameterSet = true;
 
-            if (!checkRegExPathLastPart.Checked)
+            if (txtbRegExFolder.Text.Length > 0)
+                bIsFolderParameterSet = true;
+            
+            if (txtbMaxFolderDepth.Text.Length > 0)
+                bIsFolderParameterSet = true;
+            
+            if (txtbSkipFolderList.Text.Length > 0)
                 bIsFolderParameterSet = true;
 
             return bIsFolderParameterSet;
@@ -444,8 +451,26 @@ namespace NetGrep
                 string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
                 if (e.Data.GetDataPresent(DataFormats.FileDrop, false) == true)
                 {
+                    List<string> folders = new List<string>();
+
+                    foreach (string file in files) {
+                        if (Directory.Exists(file))
+                        {
+                            folders.Add(file);
+                        }
+                        else
+                        {
+                            string folder = Path.GetDirectoryName(file);
+
+                            if (Directory.Exists(folder))
+                            {
+                                folders.Add(folder);
+                            }
+                        }
+                    }
+
                     ComboBox tbxFolder = (ComboBox)sender;
-                    tbxFolder.Text = LibStringFileFolderNames.CreateSpaceSeparatedFolderNamesString(new List<string>(files));
+                    tbxFolder.Text = LibStringFileFolderNames.CreateSpaceSeparatedFolderNamesString(folders);
 
                     // e.Effect = DragDropEffects.All;
                 }
@@ -467,6 +492,12 @@ namespace NetGrep
             txtbOlderThenValue.Visible = chkbUseDateTime.Checked;
             cmbbOlderThenFaktor.Visible = chkbUseDateTime.Checked;
         }
+
+        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
 
         //private void cmbSearchString_DrawItem(object sender, DrawItemEventArgs e)
         //{
