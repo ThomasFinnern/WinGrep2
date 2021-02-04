@@ -1,4 +1,3 @@
-- ToDo: !!! no admin any more !!!
 - ToDo: 
 - ToDo: 
 - ToDo: Limit search depth to n folder
