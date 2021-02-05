@@ -55,6 +55,7 @@ namespace NetGrep
         // public bool bSkipBinaryFiles;
         public bool bSkipFileTypes;
         public string SkipFileTypesString;
+        public bool bJustFilesAnyContent;
 
 
         // --- Folder options -------------------------------------#

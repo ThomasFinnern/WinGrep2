@@ -201,7 +201,8 @@ namespace NetGrep
 
                 PathName = Dir.FullName;
                 //string PathPart = Path.GetDirectoryName(FileName);
-                FolderName = Path.GetFileName(PathName);
+                //FolderName = Path.GetFileName(PathName); Not working
+                FolderName = new DirectoryInfo(PathName).Name;
 
                 //--- Prepare regex --------------------------------------
 

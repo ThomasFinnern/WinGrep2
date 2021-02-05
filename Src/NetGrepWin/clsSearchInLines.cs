@@ -72,6 +72,12 @@ namespace NetGrep
             FileResult = null;
             clsSurroundingFileLines SurroundingFileLines = new clsSurroundingFileLines();
 
+            //if (regExSearch. == "")
+            //{
+            //    ;
+            //}
+
+
             try 
             {
                 //--------------------------------------------------------------------------------------

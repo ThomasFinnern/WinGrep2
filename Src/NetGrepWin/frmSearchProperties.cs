@@ -94,7 +94,7 @@ namespace NetGrep
             chkSkipFileTypes.Checked = SearchProperties.bSkipFileTypes;
             cmbFileSpecSkip.Text = SearchProperties.SkipFileTypesString;
             chkRegExFileMatchCase.Checked = SearchProperties.bRegExFileMatchCase;
-
+            chkbSearchFilesAnyContent.Checked = SearchProperties.bJustFilesAnyContent;
 
             // --- Folder options -------------------------------------
 
@@ -287,6 +287,7 @@ namespace NetGrep
             SearchProperties.bSkipFileTypes = chkSkipFileTypes.Checked;
             SearchProperties.SkipFileTypesString = cmbFileSpecSkip.Text;
             SearchProperties.bRegExFileMatchCase = chkRegExFileMatchCase.Checked;
+            SearchProperties.bJustFilesAnyContent = chkbSearchFilesAnyContent.Checked;
 
             // --- Folder options -------------------------------------#
 
