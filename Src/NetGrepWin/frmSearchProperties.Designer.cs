@@ -119,6 +119,7 @@
             this.NbrShowFollowingLines = new System.Windows.Forms.TextBox();
             this.NbrShowPreviousLines = new System.Windows.Forms.TextBox();
             this.button3 = new System.Windows.Forms.Button();
+            this.chkbSearchFilesAnyContent = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel9.SuspendLayout();
             this.panel5.SuspendLayout();
@@ -918,6 +919,7 @@
             this.flowLayoutPanelFileSpecification.Controls.Add(this.chkSkipBinaryFiles);
             this.flowLayoutPanelFileSpecification.Controls.Add(this.chkSkipTextFiles);
             this.flowLayoutPanelFileSpecification.Controls.Add(this.panel8);
+            this.flowLayoutPanelFileSpecification.Controls.Add(this.chkbSearchFilesAnyContent);
             this.flowLayoutPanelFileSpecification.Location = new System.Drawing.Point(3, 382);
             this.flowLayoutPanelFileSpecification.Name = "flowLayoutPanelFileSpecification";
             this.flowLayoutPanelFileSpecification.Size = new System.Drawing.Size(592, 81);
@@ -1124,6 +1126,18 @@
             this.button3.Text = "[+]";
             this.button3.UseVisualStyleBackColor = true;
             // 
+            // chkbSearchFilesAnyContent
+            // 
+            this.chkbSearchFilesAnyContent.AutoSize = true;
+            this.chkbSearchFilesAnyContent.Enabled = false;
+            this.chkbSearchFilesAnyContent.Location = new System.Drawing.Point(449, 26);
+            this.chkbSearchFilesAnyContent.Name = "chkbSearchFilesAnyContent";
+            this.chkbSearchFilesAnyContent.Size = new System.Drawing.Size(113, 17);
+            this.chkbSearchFilesAnyContent.TabIndex = 40;
+            this.chkbSearchFilesAnyContent.Text = "Files (Any content)";
+            this.chkbSearchFilesAnyContent.UseVisualStyleBackColor = true;
+            this.chkbSearchFilesAnyContent.Visible = false;
+            // 
             // frmSearchProperties
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1273,5 +1287,6 @@
         private System.Windows.Forms.TextBox txtbMaxFolderDepth;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox txtbSkipFolderList;
+        private System.Windows.Forms.CheckBox chkbSearchFilesAnyContent;
     }
 }
