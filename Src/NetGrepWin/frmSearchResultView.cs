@@ -103,11 +103,19 @@ namespace NetGrep
         private void AssignConfig2Control()
         {
             bIsAssingData2CtrlActive = true;
-            numericUpDownPreLines.Value = LocalSearchProperties.ViewSetting.Show.LineNbrPreviousToMatch;
-            numericUpDownPostLines.Value = LocalSearchProperties.ViewSetting.Show.LineNbrFollowingMatch;
 
             numericUpDownPreLines.Maximum = LocalSearchProperties.ViewSetting.Keep.LineNbrPreviousToMatch;
             numericUpDownPostLines.Maximum = LocalSearchProperties.ViewSetting.Keep.LineNbrFollowingMatch;
+
+            numericUpDownPreLines.Value = Math.Min(
+                LocalSearchProperties.ViewSetting.Show.LineNbrPreviousToMatch,
+                LocalSearchProperties.ViewSetting.Keep.LineNbrPreviousToMatch
+                    );
+            numericUpDownPostLines.Value = Math.Min(
+                LocalSearchProperties.ViewSetting.Show.LineNbrFollowingMatch,
+                LocalSearchProperties.ViewSetting.Keep.LineNbrFollowingMatch
+                );
+
 
             // checkBoxDoShowTitle.Visible = LocalSearchProperties.ShowViewSelection.bDoShowTitle;
             checkBoxDoShowTitle.Checked = LocalSearchProperties.ViewSetting.bDoShowTitle;
@@ -448,10 +456,16 @@ namespace NetGrep
 
                 // Lines shown previus and post to found lines 
                 bIsAssingData2CtrlActive = true;
-                numericUpDownPreLines.Value = LocalSearchProperties.ViewSetting.Show.LineNbrPreviousToMatch;
-                numericUpDownPostLines.Value = LocalSearchProperties.ViewSetting.Show.LineNbrFollowingMatch;
                 numericUpDownPreLines.Maximum = LocalSearchProperties.ViewSetting.Keep.LineNbrPreviousToMatch;
                 numericUpDownPostLines.Maximum = LocalSearchProperties.ViewSetting.Keep.LineNbrFollowingMatch;
+                numericUpDownPreLines.Value = Math.Min(
+                    LocalSearchProperties.ViewSetting.Show.LineNbrPreviousToMatch, 
+                    LocalSearchProperties.ViewSetting.Keep.LineNbrPreviousToMatch
+                    );
+                numericUpDownPostLines.Value = Math.Min(
+                    LocalSearchProperties.ViewSetting.Show.LineNbrFollowingMatch,
+                    LocalSearchProperties.ViewSetting.Keep.LineNbrFollowingMatch
+                    );
                 bIsAssingData2CtrlActive = false;
 
                 ShowTitleInManuBar();
