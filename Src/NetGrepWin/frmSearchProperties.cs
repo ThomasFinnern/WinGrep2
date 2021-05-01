@@ -18,8 +18,8 @@ namespace NetGrep
         public bool bDoStartSearch;
         private clsSearchProperties LocalSearchProperties;
         public clsSearchProperties SearchProperties
-        { 
-            get {return LocalSearchProperties;}
+        {
+            get { return LocalSearchProperties; }
         }
 
         public frmSearchProperties(clsSearchProperties InSearchProperties)
@@ -41,7 +41,7 @@ namespace NetGrep
             // ToDo: Add Last used Search items  
             foreach (string Token in Global.SearchStringTokens.MergedTokenList())
             {
-                if (!cmbSearchString.Items.Contains (Token))
+                if (!cmbSearchString.Items.Contains(Token))
                     cmbSearchString.Items.Add(Token);
             }
 
@@ -59,12 +59,12 @@ namespace NetGrep
             chkUseDelimitedList.Checked = SearchProperties.bUseDelimitedList;
             textBoxSeperationChar.Text = SearchProperties.DelimitedSeperationChar;
             textBoxSearchFieldNbr.Text = SearchProperties.DelimitedSearchFieldNbr;
-            chkDelimitedList_CheckedChanged (this, new EventArgs ());
+            chkDelimitedList_CheckedChanged(this, new EventArgs());
 
             chkUseFixedWidthList.Checked = SearchProperties.bUseFixedWidthList;
             textBoxBeginPosition.Text = SearchProperties.FixedWidthBeginPosition;
             textBoxSize.Text = SearchProperties.FixedWidthSize;
-            chkUseFixedWidthList_CheckedChanged (this, new EventArgs ());
+            chkUseFixedWidthList_CheckedChanged(this, new EventArgs());
 
             // ToDo: use cmbFileSpec.Items.Clear in all assigns in all forms
             cmbFileSpec.Items.Add(SearchProperties.SearchFileTypesAsString);
@@ -85,7 +85,7 @@ namespace NetGrep
                 if (!cmbFolder.Items.Contains(Token))
                     cmbFolder.Items.Add(Token);
             }
-            
+
             // --- File type options -----------------------------------
 
             chkRegExFileNames.Checked = SearchProperties.bUseFileRegularExpression;
@@ -149,7 +149,7 @@ namespace NetGrep
 
             if (chkRegExFileNames.Checked)
                 bIsFileParameterSet = true;
-            
+
             if (chkRegExFileMatchCase.Checked)
                 bIsFileParameterSet = true;
 
@@ -174,10 +174,10 @@ namespace NetGrep
 
             if (txtbRegExFolder.Text.Length > 0)
                 bIsFolderParameterSet = true;
-            
+
             if (txtbMaxFolderDepth.Text.Length > 0)
                 bIsFolderParameterSet = true;
-            
+
             if (txtbSkipFolderList.Text.Length > 0)
                 bIsFolderParameterSet = true;
 
@@ -235,74 +235,92 @@ namespace NetGrep
             return bIsExtraParameterSet;
         }
 
-    
-    
-    
-    
+
+
+
+
         private void AssignControl2Config()
         {
-            // --- Search string options -------------------------------------
+            try
+            {
+                // --- Search string options -------------------------------------
 
-            // SearchProperties.SearchString = (string)cmbSearchString.Items[0];
-            SearchProperties.SearchString = cmbSearchString.Text;
-            Global.SearchStringTokens.AddUsedToken(cmbSearchString.Text);
-            Global.SearchStringTokens.SaveClass2UserFile();
+                // SearchProperties.SearchString = (string)cmbSearchString.Items[0];
+                SearchProperties.SearchString = cmbSearchString.Text;
+                Global.SearchStringTokens.AddUsedToken(cmbSearchString.Text);
+                Global.SearchStringTokens.SaveClass2UserFile();
 
-            SearchProperties.bUseRegularExpression = chkUseRegularExpression.Checked;
-            SearchProperties.bWholeWordsOnly = chkWholeWordsOnly.Checked;
-            SearchProperties.bMatchCase = chkMatchCase.Checked;
-            SearchProperties.bLinesWithNoMatch = chkLinesWithNoMatch.Checked;
-            SearchProperties.bFilesWithNoMatch = chkFilesWithNoMatch.Checked;
-            SearchProperties.bStopAfterFirstMatch = chkStopAfterFirstMatch.Checked;
-            SearchProperties.bSearchInFoundFiles = chkSearchInFoundFiles.Checked;
-            // SearchProperties.FileSpecification = (string)cmbFileSpec.Items[0];
-            SearchProperties.bNeedsCompleteLine = chkNeedsCompleteLine.Checked;
+                SearchProperties.bUseRegularExpression = chkUseRegularExpression.Checked;
+                SearchProperties.bWholeWordsOnly = chkWholeWordsOnly.Checked;
+                SearchProperties.bMatchCase = chkMatchCase.Checked;
+                SearchProperties.bLinesWithNoMatch = chkLinesWithNoMatch.Checked;
+                SearchProperties.bFilesWithNoMatch = chkFilesWithNoMatch.Checked;
+                SearchProperties.bStopAfterFirstMatch = chkStopAfterFirstMatch.Checked;
+                SearchProperties.bSearchInFoundFiles = chkSearchInFoundFiles.Checked;
+                // SearchProperties.FileSpecification = (string)cmbFileSpec.Items[0];
+                SearchProperties.bNeedsCompleteLine = chkNeedsCompleteLine.Checked;
 
-            SearchProperties.bUseDelimitedList = chkUseDelimitedList.Checked;
-            SearchProperties.DelimitedSeperationChar = textBoxSeperationChar.Text;
-            SearchProperties.DelimitedSearchFieldNbr = textBoxSearchFieldNbr.Text;
+                SearchProperties.bUseDelimitedList = chkUseDelimitedList.Checked;
+                SearchProperties.DelimitedSeperationChar = textBoxSeperationChar.Text;
+                SearchProperties.DelimitedSearchFieldNbr = textBoxSearchFieldNbr.Text;
 
-            SearchProperties.bUseFixedWidthList = chkUseFixedWidthList.Checked;
-            SearchProperties.FixedWidthBeginPosition = textBoxBeginPosition.Text;
-            SearchProperties.FixedWidthBeginPosition = textBoxBeginPosition.Text;
+                SearchProperties.bUseFixedWidthList = chkUseFixedWidthList.Checked;
+                SearchProperties.FixedWidthBeginPosition = textBoxBeginPosition.Text;
+                SearchProperties.FixedWidthBeginPosition = textBoxBeginPosition.Text;
 
-            SearchProperties.SearchFileTypesAsString = cmbFileSpec.Text;
-            Global.FileSpecificationToken.AddUsedToken(cmbFileSpec.Text);
-            Global.FileSpecificationToken.SaveClass2UserFile();
+                SearchProperties.SearchFileTypesAsString = cmbFileSpec.Text;
+                Global.FileSpecificationToken.AddUsedToken(cmbFileSpec.Text);
+                Global.FileSpecificationToken.SaveClass2UserFile();
 
-            // SearchProperties = chkSkipTextFiles.Checked;
-            // SearchProperties = chkSkipBinaryFiles.Checked;
-            // SearchProperties = chkSearchInZipFiles.Checked;
+                // SearchProperties = chkSkipTextFiles.Checked;
+                // SearchProperties = chkSkipBinaryFiles.Checked;
+                // SearchProperties = chkSearchInZipFiles.Checked;
 
-            // SearchProperties.SearchFoldersAsString = (string)cmbFolder.Items[0];
-            SearchProperties.SearchFoldersAsString = cmbFolder.Text;
-            Global.SearchFoldersToken.AddUsedToken(cmbFolder.Text);
-            Global.SearchFoldersToken.SaveClass2UserFile();
+                // SearchProperties.SearchFoldersAsString = (string)cmbFolder.Items[0];
+                SearchProperties.SearchFoldersAsString = cmbFolder.Text;
+                Global.SearchFoldersToken.AddUsedToken(cmbFolder.Text);
+                Global.SearchFoldersToken.SaveClass2UserFile();
 
-            // --- File type options -----------------------------------
+                // --- File type options -----------------------------------
 
-            SearchProperties.bUseFileRegularExpression = chkRegExFileNames.Checked;
-            SearchProperties.bSearchInsideZipFiles = chkSearchInZipFiles.Checked;
-            // SearchProperties.bSkipBinaryFiles = .Checked;
-            SearchProperties.bSkipFileTypes = chkSkipFileTypes.Checked;
-            SearchProperties.SkipFileTypesString = cmbFileSpecSkip.Text;
-            SearchProperties.bRegExFileMatchCase = chkRegExFileMatchCase.Checked;
-            SearchProperties.bJustFilesAnyContent = chkbSearchFilesAnyContent.Checked;
+                SearchProperties.bUseFileRegularExpression = chkRegExFileNames.Checked;
+                SearchProperties.bSearchInsideZipFiles = chkSearchInZipFiles.Checked;
+                // SearchProperties.bSkipBinaryFiles = .Checked;
+                SearchProperties.bSkipFileTypes = chkSkipFileTypes.Checked;
+                SearchProperties.SkipFileTypesString = cmbFileSpecSkip.Text;
+                SearchProperties.bRegExFileMatchCase = chkRegExFileMatchCase.Checked;
+                SearchProperties.bJustFilesAnyContent = chkbSearchFilesAnyContent.Checked;
 
-            // --- Folder options -------------------------------------#
+                // --- Folder options -------------------------------------#
 
-            SearchProperties.bUseFolderRegularExpression = checkRegExFullPath.Checked;
-            SearchProperties.bRegExFolderMatchCase = chkRegExFolderMatchCase.Checked;
-            SearchProperties.bRegExPathLastPart = checkRegExPathLastPart.Checked;
-            SearchProperties.RegExFolderText = txtbRegExFolder.Text;
+                SearchProperties.bUseFolderRegularExpression = checkRegExFullPath.Checked;
+                SearchProperties.bRegExFolderMatchCase = chkRegExFolderMatchCase.Checked;
+                SearchProperties.bRegExPathLastPart = checkRegExPathLastPart.Checked;
+                SearchProperties.RegExFolderText = txtbRegExFolder.Text;
 
-            SearchProperties.bDoRecourseFolders = chkDoRecourseFolder.Checked;
+                SearchProperties.bDoRecourseFolders = chkDoRecourseFolder.Checked;
 
-            SearchProperties.ViewSetting.Show.LineNbrFollowingMatch = Convert.ToInt32(NbrShowFollowingLines.Text);
-            SearchProperties.ViewSetting.Show.LineNbrPreviousToMatch = Convert.ToInt32(NbrShowPreviousLines.Text);
+                //SearchProperties.ViewSetting.Show.LineNbrFollowingMatch = Convert.ToInt32(NbrShowFollowingLines.Text);
+                //SearchProperties.ViewSetting.Show.LineNbrPreviousToMatch = Convert.ToInt32(NbrShowPreviousLines.Text);
 
-            SearchProperties.ViewSetting.Keep.LineNbrFollowingMatch = Convert.ToInt32(NbrPrepareFollowingLines.Text);
-            SearchProperties.ViewSetting.Keep.LineNbrPreviousToMatch = Convert.ToInt32(NbrPreparePreviousLines.Text);
+                //SearchProperties.ViewSetting.Keep.LineNbrFollowingMatch = Convert.ToInt32(NbrPrepareFollowingLines.Text);
+                //SearchProperties.ViewSetting.Keep.LineNbrPreviousToMatch = Convert.ToInt32(NbrPreparePreviousLines.Text);
+
+                //TryParse(string ? s, out int? result);
+
+                long.TryParse(NbrShowFollowingLines.Text, out SearchProperties.ViewSetting.Show.LineNbrFollowingMatch);
+                long.TryParse(NbrShowPreviousLines.Text, out SearchProperties.ViewSetting.Show.LineNbrPreviousToMatch);
+
+                long.TryParse(NbrPrepareFollowingLines.Text, out SearchProperties.ViewSetting.Keep.LineNbrFollowingMatch);
+                long.TryParse(NbrPreparePreviousLines.Text, out SearchProperties.ViewSetting.Keep.LineNbrPreviousToMatch);
+            }
+            catch (Exception Ex)
+            {
+                clsErrorCapture ErrCapture = new clsErrorCapture(Ex);
+                ErrCapture.ShowExeption();
+            }
+
+
         }
 
         private void cmdExit_Click(object sender, EventArgs e)
